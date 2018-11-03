@@ -1,1 +1,0 @@
-alert("MESSAGE ENVOYE")
