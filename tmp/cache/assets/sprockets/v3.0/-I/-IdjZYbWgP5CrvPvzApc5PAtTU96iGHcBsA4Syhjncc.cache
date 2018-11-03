@@ -1,0 +1,29 @@
+I"ø(function() {
+  App.chatpublic = App.cable.subscriptions.create("ChatpublicChannel", {
+    speak: function(pseudo, message) {
+      return this.perform('speak', {
+        name: name,
+        message: message
+      });
+    },
+    connected: function() {
+      return $(document).on('keypress', '#message-to-send', (function(_this) {
+        return function(event) {
+          if (event.keyCode === 13) {
+            _this.perform('speak', {
+              message: message
+            });
+            event.target.value = "";
+            return event.preventDefault();
+          }
+        };
+      })(this));
+    },
+    disconnected: function() {},
+    received: function(data) {
+      return $('#chat-history').append(data.message);
+    }
+  });
+
+}).call(this);
+:ET

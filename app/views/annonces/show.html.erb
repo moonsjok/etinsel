@@ -1,0 +1,903 @@
+<p id="notice"><%= notice %></p>
+<style>
+* {
+  box-sizing: border-box;
+}
+.row > .column {
+  padding: 0 8px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.column {
+  float: left;
+  width: 25%;
+}
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0 0 0 0.7);
+}
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+.mySlides {
+  display: none;
+}
+.cursor {
+  cursor: pointer;
+}
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+img {
+  margin-bottom: -4px;
+}
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+.demo {
+  opacity: 0.6;
+}
+.active,
+.demo:hover {
+  opacity: 1;
+}
+img.hover-shadow {
+  transition: 0.3s;
+}
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>
+<div class="container">
+
+
+<div class="row">
+		<div class="col-md-8 " style="font-family:Roboto; color:rgb(72, 72, 72);" >
+<div class="card border border-0">
+
+  <div class="card-body">
+
+			<div id="carousel<%= @annonce.id %>Indicators" class="carousel slide" data-ride="carousel" style="height:300px; background-image:url(/img/annonceListImgPlaceholder.png); background-position:center; background-repeat:no-repeat;">
+
+			    <ol class="carousel-indicators">
+					<% j = 0 %>
+              <% for photo in @photos %>
+					<%if photo.to_s !=""%>
+					<li data-target="#carousel<%= @annonce.id %>Indicators" data-slide-to="<%= j %>" <% if 1 == 0 %> class="active" <% end %>></li>
+					<% end %>
+					<% j = j+1 %>
+					<% end %>
+				  </ol>
+			    <div class="carousel-inner">
+				    <% i = 0 %>
+                    <%  for photo in @photos %>
+										<%if photo.to_s !=""%>
+					    	<% i = i + 1 %>
+						<div class="carousel-item bg-secondary <% if i == 1 %> active <% end %> ">
+						   <center>
+                    <%= image_tag(photo, class:"d-block image-responsive cursor", height:"300", onclick:"openModal();currentSlide(1)" )%>
+							</center>
+
+						</div>
+										<% end %>
+					<% end %>
+		        </div>
+                <a class="carousel-control carousel-control-prev" href="#carousel<%= @annonce.id %>Indicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+			    <a class="carousel-control  carousel-control-next" href="#carousel<%= @annonce.id %>Indicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+			   </a>
+			</div>
+      <b class="text-warning float-left text-left" ><%= @annonce.sous_categorie %></b>
+      <br/>
+      <span class="card-title float-left " >
+         <a style="font-size:3vw; color:black; text-decoration:none;" href="/annonces/<%=@annonce.id %>"><%= @annonce.designation %></a>
+         <br>
+          <span style=" font-size:2vw;padding-left:0px; margin-left:0px; float:left !important; text-align:left !important;"> <%= @Pays[@annonce.pays] %>  <%= @annonce.ville %> <%= @annonce.quartier %>
+       </span>
+      <br>
+
+
+  <div id="myModal" class="modal" style="z-index:99999; background-color:rgba(0,0,0,0.7);" >
+    <span class="close cursor" onclick="closeModal()" style="text-shadow:1px 1px 0px white" >&times;</span>
+    <div class="modal-content" style="height:500px; background-color:rgba(108,117,125,0.6);" >
+		<% i = 0 %>
+		<%  for photo in @photos %>
+				<%if photo.to_s !=""%>
+					<% i = i + 1 %>
+		<div class="mySlides" >
+		  <div class="numbertext"><%= i.to_s+"/ "+@photos.length.to_s %></div>
+<center>
+      <%= image_tag(photo, class:"d-block  my-auto ml-auto mr-auto", height:"500", onclick:"openModal();currentSlide(1)" )%>
+</center>
+		</div>
+					<% end %>
+				<% end %>
+		<a class="prev" onclick="plusSlides(-1)" style="border:solid 2px white; color:white;" >&#10094;</a>
+		<a class="next" onclick="plusSlides(1)" style="border:solid 2px white; color:white;" >&#10095;</a>
+
+
+    </div>
+</div>
+<br/>
+<span style="text-align:left; float:left;"> <%= @annonce.categorie %> &nbsp;  <%= @annonce.sous_categorie %></a>
+<br/>
+
+<p class="text-justify mt-3 mb-3">
+            <%= raw(@annonce.description) %><br/>
+	        </p>
+
+
+<!-------------------- MODALITES -------------->
+<br/>
+				<h3 style="" >Modalités </h3>
+<hr style="margin-top:-5px; padding-top:-5px;">
+
+				 <div class="row">
+				  <div class="col-md-6 mb-3">
+            <span style="float:left;"> Prix ou loyer <%= @annonce.prix %> (FCFA)</span>
+				  </div>
+				<div class="col-md-6 mb-3">
+
+<span style="float:left;"> Commission agence <%= @annonce.commission_agence %>(FCFA)</span>
+				  </div>
+
+				</div>
+			<div class="row">
+				  <div class="col-md-6 mb-3">
+
+<span style="float:left;"> Caution Électricité/Eau <%= @annonce.caution_electricite_eau %> (FCFA)</span>
+				  </div>
+				<div class="col-md-6 mb-0">
+				<div class="row">
+					 <div class="col-md-6" >
+                          <span style="float:left; padding-right:20px;">  <%= @annonce.condition %></span>
+                          <span style="float:left;"> <%= @annonce.minimum %></span>
+				  </div>
+				</div>
+				</div>
+			</div>
+  <!-------------------------- FIN DES MODALITES  ------------------------->
+
+
+
+  <!-------------------------- DEBUT CARACTÉRISTIQUES ET COMMODITÉS  ------------------------->
+
+<br/>
+				<h3 style="">Caractéristiques et commodités</h3>
+        <hr style="margin-top:-5px; padding-top:-5px;">
+
+            <div class="row mb-2 text-left;" >
+
+				  <div class="col-md-4 text-left;"  >
+				    <span style="float:left"> Situé dans <%= @annonce.situe_dans %></span>
+
+				  </div>
+				  <div class="col-md-4  text-left;" >
+				    <span style="float:left"> <%= "Cours commune de "+@annonce.nbr_menage.to_s+" ménage(s)" %></span>
+
+				  </div>
+					 <div class="col-md-4  text-left;">
+				    <span style="float:left"> <%= "Superficie "+@annonce.superficie.to_s+" m² " %></span>
+
+				  </div>
+
+			</div>
+			<!--------------- new row ---------------------------->
+            <div class="row mb-2 text-left;">
+				  <div class="col-md-4  text-left;">
+				    <span style="float:left"> <%= @annonce.chambre.to_s+" chambre(s) "  %></span>
+
+				  </div>
+				  <div class="col-md-4  text-left;" >
+				    <span style="float:left"> <%= @annonce.salon.to_s+" salon(s) "  %></span>
+				  </div>
+				  <div class="col-md-4  text-left;"  >
+				    <span style="float:left"> <%= @annonce.cuisine.to_s+" cuisine(s)" %></span>
+				  </div>
+			</div>
+
+			<!--------------- new row ---------------------------->
+            <div class="row mb-2 text-left;">
+				  <div class="col-md-4  text-left;">
+				    <span style="float:left"> <%= @annonce.douche.to_s+" douche(s) "  %></span>
+
+				  </div>
+				  <div class="col-md-4  text-left;" >
+				    <span style="float:left"> <%= @annonce.wc.to_s+" WC "  %></span>
+				  </div>
+				  <div class="col-md-4  text-left;"  >
+
+				  </div>
+			</div>
+
+	<div class="row mt-0">
+				 <div class="col-md-12 mt-0 mb-2" style="  " ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Ce logement dispose de : </div>
+				</div>
+<div class="row"  >
+
+	<% if @annonce.climatisation == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_Climatisation" checked readonly disabled  >
+		  		  <label class="form-check-label" for="inlineCheckbox_Climatisation">Climatisation</label> &nbsp; &nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.brasseur == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_brasseur" checked readonly disabled >
+		  		  <label class="form-check-label" for="inlineCheckbox_brasseur">Brasseur/Ventilo</label> &nbsp; &nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.garage == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_parking" checked readonly disabled  >
+		  		  <label class="form-check-label" for="inlineCheckbox_parking">Parking/garage</label> &nbsp; &nbsp;
+
+		</div>
+    </div>
+<% end %>
+</div>
+
+
+<div class="row"  >
+
+	<% if @annonce.electricite == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_electricite" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_electricite"> Électricité</label>&nbsp;&nbsp;
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.eau == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_eau" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_eau">Eau</label>&nbsp;&nbsp;
+		</div>
+    </div>
+<% end %>
+
+	<% if @annonce.voirie == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_voirie" checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_voirie">Voirie</label>&nbsp;&nbsp;
+		</div>
+    </div>
+<% end %>
+</div>
+<div class="row"  >
+<% if @annonce.terrasse == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_voirie" checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_voirie">Terrasse</label>&nbsp;&nbsp;
+		</div>
+    </div>
+<% end %>
+
+
+<% if @annonce.cours == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_voirie" checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_voirie">Cours</label>&nbsp;&nbsp;
+		</div>
+    </div>
+<% end %>
+
+
+
+<% if @annonce.jardin == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_voirie" checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_voirie">Jardin</label>&nbsp;&nbsp;
+		</div>
+    </div>
+<% end %>
+
+</div>
+
+<div class="row"   >
+
+	<% if @annonce.meubles == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_Terrasse" checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_Terrasse">Meubles</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.tv == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_Jardin" checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_jardin">Tv</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.placards == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox_meubles" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_meubles">Placards </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+</div>
+
+
+<div class="row"  >
+
+	<% if @annonce.machine_a_laver == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_machine_a_laver" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_machine_a_laver">Machine à laver</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+
+
+	<% if @annonce.chauffe_eau_toilette == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_chauffe_eau_salle_de_bains" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_chauffe_eau_salle_de_bains">Chauffe eau toilette </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.debarras == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_station_d_essence" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_déebarras">Débarras </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.placards == "oui_" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_placards" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_placards">Placards</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+</div>
+
+<!---------------------------- COuverture reseau /internet  ---------------------------->
+				<div class="row mt-2">
+				 <div class="col-md-12 mt-0 mb-2" style="  " ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Couverture réseaux mobile / internet : </div>
+				</div>
+<div class="row">
+
+	<% if @annonce.fibre_optique == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_fibre_optique" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_fibre_optique">Fibre optique </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.adsl == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_adsl"  checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_adsl">ADSL</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.reseaux_mobile == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_reseau_mobile" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_reseau_mobile">Réseaux mobile</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<%end%>
+</div>
+<div class="row mb-3" >
+
+	<% if @annonce.sat == "oui" %>
+    <div class="col-md-4  text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_SAT" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_SAT">Ligne téléphonique</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.wimax == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_Wimax" checked readonly disabled  >
+		  <label class="form-check-label" for="inlineCheckbox_Wimax">Wimax</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+	<% if @annonce.blr.to_s == "oui" %>
+    <div class="col-md-4 text-left">
+		<div class="form-check form-check-inline">
+
+		<input class="form-check-input" type="checkbox" id="inlineCheckbox_blr" checked readonly disabled >
+		  <label class="form-check-label" for="inlineCheckbox_blr">Radio BLR</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+<% end %>
+</div>
+
+
+
+ <!-----------------------------------  FIN CACTERISTIQUES ET COMODITES ------------------------------------->
+
+
+
+
+  <!-------------------------- DEBUT ACCESSIBILITES  ------------------------->
+
+<br/>
+				<h3 style="">Accessibilités</h3>
+         <hr style="margin-top:-5px; padding-top:0px;">
+				<div class="row mt-0">
+				 <div class="col-md-12 mt-0 mb-2" style="" ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Les indispensables aux alentours de 100 m</div>
+				</div>
+
+<div class="row text-left">
+	<% if @annonce.hopital.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			  <input class="form-check-input" type="checkbox" id="inlineCheckbox_hopital" checked readonly disabled>
+					  <label class="form-check-label" for="inlineCheckbox_hopital">Hopital</label> &nbsp; &nbsp;
+
+			</div>
+		</div>
+	<%end%>
+	<% if @annonce.marche.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			  <input class="form-check-input" type="checkbox" id="inlineCheckbox_marche" checked readonly disabled>
+					  <label class="form-check-label" for="inlineCheckbox_marche">Marché</label> &nbsp; &nbsp;
+
+			</div>
+		</div>
+	<%end%>
+	<% if @annonce.ecole.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			  <input class="form-check-input" type="checkbox" id="inlineCheckbox_ecole" checked readonly disabled>
+					  <label class="form-check-label" for="inlineCheckbox_ecole">École</label> &nbsp; &nbsp;
+
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
+<div class="row text-left">
+		<% if @annonce.service_public.to_s == "oui" %>
+			<div class="col-md-4 text-left">
+				<div class="form-check form-check-inline">
+
+
+				  <input class="form-check-input" type="checkbox" id="inlineCheckbox_services_publiques" checked readonly disabled>
+				  <label class="form-check-label" for="inlineCheckbox_services_publiques">Services publiques</label>&nbsp;&nbsp;
+				</div>
+			</div>
+		<%end %>
+		<% if @annonce.aeroport.to_s == "oui" %>
+			<div class="col-md-4 text-left">
+				<div class="form-check form-check-inline">
+
+				  <input class="form-check-input" type="checkbox" id="inlineCheckbox_aeroport"  checked readonly disabled>
+				  <label class="form-check-label" for="inlineCheckbox_aeroport">Aéroport</label>&nbsp;&nbsp;
+				</div>
+			</div>
+		<% end %>
+		<% if @annonce.supermarche.to_s == "oui" %>
+			<div class="col-md-4 text-left">
+				<div class="form-check form-check-inline">
+
+
+				  <input class="form-check-input" type="checkbox" id="inlineCheckbox_supermarche"  checked readonly disabled>
+				  <label class="form-check-label" for="inlineCheckbox_supermarche"> Supermarché</label>&nbsp;&nbsp;
+				</div>
+			</div>
+			<% end %>
+</div>
+
+
+<div class="row text-left">
+	<% if @annonce.hotel.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			  <input class="form-check-input" type="checkbox" id="inlineCheckbox_hotel" checked readonly disabled>
+			  <label class="form-check-label" for="inlineCheckbox_hotel">Hotel</label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<%end%>
+	<% if @annonce.bar_restaurant.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			  <input class="form-check-input" type="checkbox" id="inlineCheckbox_bar_restaurant"  checked readonly disabled>
+			  <label class="form-check-label" for="inlineCheckbox_bar_restaurant">Bar/Restaurant</label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<% end %>
+	<% if @annonce.mairie.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			  <input class="form-check-input" type="checkbox" id="inlineCheckbox_mairie"  checked readonly disabled>
+			  <label class="form-check-label" for="inlineCheckbox_mairie">Mairie </label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
+<div class="row text-left">
+	<% if @annonce.centre_de_loisir.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			<input class="form-check-input" type="checkbox" id="inlineCheckbox_centre_de_loisir" checked readonly disabled>
+			  <label class="form-check-label" for="inlineCheckbox_centre_de_loisir">Centre de loisirs</label>&nbsp;
+
+			</div>
+		</div>
+	<% end %>
+	<% if @annonce.pharmacie.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			<input class="form-check-input" type="checkbox" id="inlineCheckbox_pharmacie" checked readonly disabled>
+			  <label class="form-check-label" for="inlineCheckbox_pharmacie">Pharmacie</label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<% end %>
+	<% if @annonce.pressing.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			<input class="form-check-input" type="checkbox" id="inlineCheckbox_pressing" checked readonly disabled>
+			  <label class="form-check-label" for="inlineCheckbox_pressing">Pressing</label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<%end%>
+</div>
+	<% if @annonce.plage.to_s == "oui" %>
+<div class="row text-left">
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+
+			<input class="form-check-input" type="checkbox" id="inlineCheckbox_plage" checked readonly disabled >
+			  <label class="form-check-label" for="inlineCheckbox_plage">Plage </label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<% end %>
+	<% if @annonce.station_d_essence.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+			<input class="form-check-input" type="checkbox" id="inlineCheckbox_station_d_essence" checked readonly disabled>
+			  <label class="form-check-label" for="inlineCheckbox_station_d_essence">Station d'essence </label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<% end %>
+	<% if @annonce.gare_routiere.to_s == "oui" %>
+		<div class="col-md-4 text-left">
+			<div class="form-check form-check-inline">
+			<input class="form-check-input" type="checkbox" id="inlineCheckbox_gare_routiere"
+	  checked readonly disabled
+			>
+			  <label class="form-check-label" for="inlineCheckbox_gare_routiere">Gare routière</label>&nbsp;&nbsp;
+
+			</div>
+		</div>
+	<% end %>
+
+<br/>
+
+
+
+
+ <!-----------------------------------  FIN ACCESSIBILITES ------------------------------------->
+
+
+
+ <h3 class="text-left mt-5" scope="col" >Géolocalisation</h3>
+         <hr style="margin-top:-5px; padding-top:0px;">
+
+<div id="showMap" style="height:250px"></div>
+<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
+<script>
+    var lat            = <%= @annonce.localisation_latitude %>;
+    var lon            = <%= @annonce.localisation_longitude %>;
+    var zoom           = 10;
+    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
+    map = new OpenLayers.Map("showMap");
+    var mapnik         = new OpenLayers.Layer.OSM();
+    map.addLayer(mapnik);
+    var markers = new OpenLayers.Layer.Markers( "Markers" );
+    map.addLayer(markers);
+    markers.addMarker(new OpenLayers.Marker(position));
+    map.setCenter(position, zoom);
+</script>
+ </div>
+ </div>
+</div>
+
+
+<div class="col-md-4">
+    <div class="card" >
+  <div class="card-body">
+    <h2 class="font-weight-bold" >Prix loyer <%= @annonce.prix %></h2>
+    <hr>
+    <h4 class="card-title">Contacter l'annonceur</h4>
+    <p class="card-text">
+
+	    Précisez-moi que vous avez trouvé mon annonce sur ETINSEL Merci.
+			    <table class="table" border="0" >
+				    <tr><td class="bg-secondary text-align"  align="center" >
+					<button class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" >
+					<i class="fa fa-phone" aria-hidden="true" style="width:30px; font-size:50px;  padding:0px !important; margin:0px  !important;" ></i> <br/><b style="float:right;" >Afficher le numéro </b>
+					</button>
+
+					</td>
+					</tr>
+                    <tr><td class="bg-secondary  text-align" valign="center"  align="center"  >
+					<button class="btn btn-secondary" data-toggle="modal" data-target="#whatsappModal">
+					<i class="fa fa-comments" aria-hidden="true"  style="width:50px; font-size:50px; padding:0px !important; margin:0px  !important;" ></i><br/> <b style="float:right;" > Ecrire à l'annonceur</b>
+					</button>
+					</td>
+					</td></tr>
+				</table>
+	</p>
+			Publié par
+      <% if !@annonceur.nil?%>
+           <a href="/lesannoncesde/<%=@annonce.user_id%>" ><%= @annonceur.name %></a>
+      <%else%>
+           Annonyme
+      <%end%>
+
+      <br/><br/>
+      <%= link_to annonce_path(@annonce.id), method: :signaler, confirm: 'Signaler l\'annonce?', class: 'btn btn-warning btn-block', 'data-message' => 'Êtes-vous sûr?', :remote => true do %>
+           Signaler l'annonce <i class="fa fa-exclamation-triangle"></i>
+      <% end %>
+  </div>
+</div>
+</div>
+
+
+
+<br/>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:999999" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center" style="font-family:'New Digital','Arial black'">
+        <center> <h1 class="modal-title" id="exampleModalLabel"><b><%= @annonce.tel %></b></h1></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  style="color:black;" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal whatsapp mail send  -->
+<div class="modal fade" id="whatsappModal" tabindex="-1" role="dialog" aria-labelledby="whatsappModalLabel" aria-hidden="true" style="z-index:999999" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary" >
+        <h2 class="modal-title text-white size-25" id="whatsappModalLabel">
+		        <i class="fa fa-fw fa-comments"></i>
+			      <small style="text-right" >Contacter l'annonceur</small>
+		   </h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:black;" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= form_for @message , url: {controller: "messages", action: "create"}, html: {class:"needs-validation", novalidate:true} do |form| %>
+
+	   <%= raw(@online) %><br/>
+     <%= form.hidden_field :user_id ,value: @user.id%>
+     <%= form.hidden_field :destinataire, value: @annonce.user_id %>
+		<textarea name="message[message]" id="message_message" class="form-control" rows="10">
+          Bonjour , je suis intéressée par votre annonce : <%=raw(''+@annonce.designation+'')%>
+	   </textarea>
+     <script data-sample="1">
+       CKEDITOR.replace( 'message_message', {
+         // Define the toolbar groups as it is a more accessible solution.
+         toolbarGroups: [
+           {"name":"basicstyles","groups":["basicstyles"]},
+           {"name":"links","groups":["links"]},
+           {"name":"paragraph","groups":["list","blocks"]},
+           {"name":"document","groups":["mode"]},
+           {"name":"insert","groups":["insert"]},
+           {"name":"styles","groups":["styles"]},
+           {"name":"about","groups":["about"]}
+         ],
+         // Remove the redundant buttons from toolbar groups defined above.
+         removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+       } );
+     </script>
+     <%= form.hidden_field :annonce_id, value: @annonce.id %>
+	   <br/>
+              <%= form.hidden_field :status %>
+    <input type="submit" value="Envoyé le message"  class="btn btn-success" name="commit" >
+<%end%>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+</div></div>
+<br/><br/><br/>

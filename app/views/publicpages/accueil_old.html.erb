@@ -1,0 +1,138 @@
+<%= render "layouts/partials/homePageHeader" %>
+<%=  %>
+<hr style="padding:0px; margin:0px; " />
+	  <div class="container">
+				<div class="row">
+					<div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 ">
+		    <form method="GET" style="padding:0px; margin:0px; ">
+					  <select name="prix" class="form-control form-control-lg" style="border:solid 2px rgb(228,77,32);  color:rgb(228,77,32);"  onchange="submit()" >
+							<option value="" >Prix</option>
+							<option value="BETWEEN 0 AND 50000" >ENTRE 0 ET 50000</option>
+							<option value="BETWEEN 50001 AND 100000" >ENTRE 50001 ET 100000</option>
+							<option value="BETWEEN 100001 AND 250000" >ENTRE 100001 ET 250000</option>
+							<option value="BETWEEN  250001 AND 1000000" >ENTRE  250001 ET 1000000</option>
+							<option value=">=1000000" >Superieur ou égale à 1000000</option>
+						</select>
+			</form>
+					</div>
+					<div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 ">
+		    <form method="GET"  style="padding:0px; margin:0px; " >
+					<select name="offre" class="form-control form-control-lg text-white"  style="border: solid 2px rgb(228, 77 , 32); background-color:rgb(228,77,32);" onchange="submit()" >
+							<option value=""  >Offres </option>
+						<% for annoncesC in Annonce.select(:categorie).distinct %>
+							<%- if annoncesC.categorie != "demande" %>
+							    <option value="<%= annoncesC.categorie %>"><%= annoncesC.categorie %></option>
+							<% end %>
+                        <% end %>
+						</select>
+			</form>
+					</div>
+					<div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 ">
+		    <form method="GET" style="padding:0px; margin:0px; " >
+						<select  name="demande" class="form-control form-control-lg "  style="border: solid 2px rgb(228, 77 , 32); color : rgb(228,77,32);"  onchange="submit()" >
+							<option  value="" >Demandes</option>
+                        <% for annonces in Annonce.select(:categorie).distinct %>
+							<%- if annonces.categorie == "demande" %>
+							    <option value="<%= annonces.categorie %>"><%= annonces.categorie %></option>
+							<% end %>
+                        <% end %>
+                        </select>
+			</form>
+					</div>
+				</div>
+	    <hr style="padding:0px; margin:0px; " />
+	    </div>
+	 <%=  %>
+
+      <div class="container">
+
+	  <br/>
+	  <h3>Plus de <%= Annonce.all.count %> annonces .</h3>
+        <!-- Example row of columns -->
+        <div class="row">
+
+<% cptAn=-1 %>
+<% for annonce in @annonces %>
+		<% cptAn=cptAn+1%>
+
+<% if cptAn == 3 %>
+</div>
+<div class="row mt-3 mb-3 ml-0 mr0" >
+    <div class="col-md-12 ml-0 mr0 text-center" style="border:solid 0px black; height:300px; " >
+        <img src="/img/banner1500X300_<%= rand(0..3) %>.gif" height="300" width="100%"  style="border:0px; padding:0px; margin-left:-12px; margin-right:-12px;" />
+    </div>
+</div>
+<div class="row" >
+<%end%>
+
+
+	    <% @photos = [annonce.photo_1,annonce.photo_2,annonce.photo_3,annonce.photo_4,annonce.photo_5,annonce.photo_6] %>
+		<div class="col-md-4">
+			<div id="carousel<%= annonce.id %>Indicators" class="carousel slide" data-ride="carousel" style="height:200px; background-image:url(/img/annonceListImgPlaceholder.png); background-position:center; background-repeat:no-repeat;">
+
+			    <ol class="carousel-indicators">
+					<% j = 0 %>
+                    <% for photo in @photos %>
+					<% if photo.to_s !="" %>
+					    <li data-target="#carousel<%= annonce.id %>Indicators" data-slide-to="<%= j %>" <% if 1 == 0 %> class="active" <% end %>></li>
+					<%end%>
+
+					<% j = j+1 %>
+					<% end %>
+				  </ol>
+			    <div class="carousel-inner">
+				    <% i = 0 %>
+                    <%  for photo in @photos %>
+					<% if photo.to_s !="" %>
+					    	<% i = i + 1 %>
+						<div class="carousel-item bg-secondary <% if i == 1 %> active <% end %> ">
+						   <center>
+						        <img class="d-block image-responsive" src="/uploads/<%= photo.to_s.gsub(" ","_") %>" alt="<%= photo.to_s.gsub(" ","_") %>"  height="200" >
+							</center>
+						</div>
+					<% end %>
+					<% end %>
+		        </div>
+                <a class="carousel-control carousel-control-prev" href="#carousel<%= annonce.id %>Indicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+			    <a class="carousel-control  carousel-control-next" href="#carousel<%= annonce.id %>Indicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+			   </a>
+			</div>
+			<p><b class="text-success" style="font-size:14px; text-transform:uppercase;" >  </b><br><b><a style="color:black; Text-Transform: Uppercase;" href="annonces/<%= annonce.id %>"><%= annonce.designation %></a></b></p>
+		</div>
+
+        <% end %>
+        </div>
+
+
+
+		<div class="text-center">
+		<% total = Annonce.all.count/10 %><% if (Annonce.all.count % 9) > 0 %> <% total = total +1 %><% end %>
+				<!-- Center-aligned -->
+				<ul class="pagination justify-content-center" style="margin:20px 0">
+				 <% for i in (1).upto(total.to_i)%>
+				  <!-- li class="page-item"><a class="page-link " href="#"><</a></li -->
+				  <li class="page-item"><a class="page-link" href="?start=<%= (i*9) - 9 %>&end=<%= i*9 %>"><%= i %></a></li>
+				  <% end %>
+				  <li class="page-item"><a class="page-link" href="?start=<%= (params[:start].to_i + 9).to_s %>&end=<%= (params[:end].to_i + 9).to_s %>">></a></li>
+				</ul>
+				<%= params[:start].to_s+" - "+params[:end].to_s %> Sur <%= Annonce.all.count %> + plus
+        </div>
+		<table width="100%" border="0">
+		    <tr><td width="100%" colspan="3" align="center"><b>Publier votre annonce sur etinsel.com</b></td></tr>
+			<tr><td  align="right"><!--img src="./img/flecheArroundiGauche.png"  width="100" height="50" --></td>
+			<td  align="center"><img src="./img/flecheArroundiGauche.png" align="middle" width="100" height="50">
+			    <% if user_signed_in? %>
+					    <a class="btn btn-warning" href="<%= new_annonce_path %>">Publier maintenant</a>
+					<% else %>
+						<%= link_to("Publier maintenant", user_session_path, class:"btn btn-warning") %>
+				<% end %>
+			<img src="./img/flecheArroundiDroite.png" align="middle" width="100" height="50" ></td>
+			<td  align="left"><!--img src="./img/flecheArroundiDroite.png"  width="100" height="50" --></td></tr>
+		</table>
+<br/>
+    </div> <!-- /container -->

@@ -1,0 +1,926 @@
+<div class="row" >
+ <div class="col-md-6" >
+<%= form_for(@annonce) do |form| %>
+  <% if annonce.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@annonce.errors.count, "error") %> prohibited this annonce from being saved:</h2>
+      <ul>
+      <% @annonce.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card bg-light text-dark  mt-2">
+    <div class="card-body">
+      <b class="card-title" style="font-size:2vw;" >Description du bien</b>
+
+  <div class="field">
+    <%= form.text_field :designation, class:"form-control", placeholder:"Titre de l'annonce", required:""  %>
+  </div>
+
+<div class="row mt-3">
+<div class="col-md-6">
+<label>Catégorie</label>
+<%= form.select  :categorie, [["Choisissez une catégorie",""],"Vendre","Louer","Colocation","Demander" ],{}, {:class => 'form-control',required: true} %>
+
+</div>
+  <div class="col-md-6">
+    <label>Sous catégorie</label>
+     <%= form.select :sous_categorie, [["Choisissez une sous catégorie",""],"Appartement","Maison","Chambre","Villa","Magasin","Immeuble","Terrain"],{}, {:class => 'form-control', required: true} %>
+  </div>
+</div>
+
+ <div class="row mt-3">
+  <div class="col-md-4 mb-3">
+  <label>Pays</label>
+  <%= form.select :pays,
+               [["Afghanistan","AF"],
+                ["Albania","AL"],
+                ["Algeria","DZ"],
+                ["American Samoa","AS"],
+                ["Andorra","AD"],
+                ["Angola","AO"],
+                ["Anguilla","AI"],
+                ["Antigua and Barbuda","AG"],
+                ["Argentina","AR"],
+                ["Armenia","AM"],
+                ["Aruba","AW"],
+                ["Australia","AU"],
+                ["Austria","AT"],
+                ["Azerbaijan","AZ"],
+                ["Bahamas","BS"],
+                ["Bahrain","BH"],
+                ["Bangladesh","BD"],
+                ["Barbados","BB"],
+                ["Belarus","BY"],
+                ["Belgium","BE"],
+                ["Belize","BZ"],
+                ["Benin","BJ"],
+                ["Bermuda","BM"],
+                ["Bhutan","BT"],
+                ["Bolivia Plurinational State","BO"],
+                ["Bosnia and Herzegovina","BA"],
+                ["Botswana","BW"],
+                ["Bouvet Island","BV"],
+                ["Brazil","BR"],
+                ["British Indian Ocean Territory","IO"],
+                ["Brunei Darussalam","BN"],
+                ["Bulgaria","BG"],
+                ["Burkina Faso","BF"],
+                ["Burundi","BI"],
+                ["Cambodia","KH"],
+                ["Cameroon","CM"],
+                ["Canada","CA"],
+                ["Cape Verde","CV"],
+                ["Cayman Islands","KY"],
+                ["Central African Republic","CF"],
+                ["Chad","TD"],
+                ["Chile","CL"],
+                ["China","CN"],
+                ["Colombia","CO"],
+                ["Comoros","KM"],
+                ["Congo","CG"],
+                ["Congo(RDC)","CD"],
+                ["Cook Islands","CK"],
+                ["Costa Rica","CR"],
+                ["Côte d'Ivoire","CI"],
+  ["Croatia","HR"],
+  ["Cuba","CU"],
+  ["Curaçao","CW"],
+  ["Cyprus","CY"],
+  ["Czech Republic","CZ"],
+  ["Denmark","DK"],
+  ["Djibouti","DJ"],
+  ["Dominica","DM"],
+  ["Dominican Republic","DO"],
+  ["Ecuador","EC"],
+  ["Egypt","EG"],
+  ["El Salvador","SV"],
+  ["Equatorial Guinea","GQ"],
+  ["Eritrea","ER"],
+  ["Estonia","EE"],
+  ["Ethiopia","ET"],
+  ["Falkland Islands (Malvinas)","FK"],
+  ["Faroe Islands","FO"],
+  ["Fiji","FJ"],
+  ["Finland","FI"],
+  ["France","FR"],
+  ["French Guiana","GF"],
+  ["French Polynesia","PF"],
+  ["French Southern Territories","TF"],
+  ["Gabon","GA"],
+  ["Gambia","GM"],
+  ["Georgia","GE"],
+  ["Germany","DE"],
+  ["Ghana","GH"],
+  ["Gibraltar","GI"],
+  ["Greece","GR"],
+  ["Greenland","GL"],
+  ["Grenada","GD"],
+  ["Guadeloupe","GP"],
+  ["Guam","GU"],
+  ["Guatemala","GT"],
+  ["Guernsey","GG"],
+  ["Guinea","GN"],
+  ["Guinea-Bissau","GW"],
+  ["Guyana","GY"],
+  ["Haiti","HT"],
+  ["Heard Island","HM"],
+  ["Holy See (Vatican City State)","VA"],
+  ["Honduras","HN"],
+  ["Hong Kong","HK"],
+  ["Hungary","HU"],
+  ["Iceland","IS"],
+  ["India","IN"],
+  ["Indonesia","ID"],
+  ["Iran Islamic Republic","IR"],
+  ["Iraq","IQ"],
+  ["Ireland","IE"],
+  ["Isle of Man","IM"],
+  ["Israel","IL"],
+  ["Italy","IT"],
+  ["Jamaica","JM"],
+  ["Japan","JP"],
+  ["Jersey","JE"],
+  ["Jordan","JO"],
+  ["Kazakhstan","KZ"],
+  ["Kenya","KE"],
+  ["Kiribati","KI"],
+  ["Korea Democratic","KP"],
+  ["Korea Republic","KR"],
+  ["Kuwait","KW"],
+  ["Kyrgyzstan","KG"],
+  ["Lao People's Democratic","LA"],
+      ["Latvia","LV"],
+      ["Lebanon","LB"],
+      ["Lesotho","LS"],
+      ["Liberia","LR"],
+      ["Libya","LY"],
+      ["Liechtenstein","LI"],
+      ["Lithuania","LT"],
+      ["Luxembourg","LU"],
+      ["Macao","MO"],
+      ["Macedonia","MK"],
+      ["Madagascar","MG"],
+      ["Malawi","MW"],
+      ["Malaysia","MY"],
+      ["Maldives","MV"],
+      ["Mali","ML"],
+      ["Malta","MT"],
+      ["Marshall Islands","MH"],
+      ["Martinique","MQ"],
+      ["Mauritania","MR"],
+      ["Mauritius","MU"],
+      ["Mayotte","YT"],
+      ["Mexico","MX"],
+      ["Micronesia Federated States","FM"],
+      ["Moldova Republic","MD"],
+      ["Monaco","MC"],
+      ["Mongolia","MN"],
+      ["Montenegro","ME"],
+      ["Montserrat","MS"],
+      ["Morocco","MA"],
+      ["Mozambique","MZ"],
+      ["Myanmar","MM"],
+      ["Namibia","NA"],
+      ["Nauru","NR"],
+      ["Nepal","NP"],
+      ["Netherlands","NL"],
+      ["New Caledonia","NC"],
+      ["New Zealand","NZ"],
+      ["Nicaragua","NI"],
+      ["Niger","NE"],
+      ["Nigeria","NG"],
+      ["Niue","NU"],
+      ["Norfolk Island","NF"],
+      ["Northern Mariana Islands","MP"],
+      ["Norway","NO"],
+      ["Oman","OM"],
+      ["Pakistan","PK"],
+      ["Palau","PW"],
+      ["Palestinian Territory Occupied","PS"],
+      ["Panama","PA"],
+      ["Papua New Guinea","PG"],
+      ["Paraguay","PY"],
+      ["Peru","PE"],
+      ["Philippines","PH"],
+      ["Pitcairn","PN"],
+      ["Poland","PL"],
+      ["Portugal","PT"],
+      ["Puerto Rico","PR"],
+      ["Qatar","QA"],
+      ["Réunion","RE"],
+      ["Romania","RO"],
+      ["Russian Federation","RU"],
+      ["Rwanda","RW"],
+      ["Saint Helena","SH"],
+      ["Saint Kitts and Nevis","KN"],
+      ["Saint Lucia","LC"],
+      ["Saint Martin (French part)","MF"],
+      ["Saint Pierre and Miquelon","PM"],
+      ["Saint Vincent and the Grenadines","VC"],
+      ["Samoa","WS"],
+      ["San Marino","SM"],
+      ["Sao Tome and Principe","ST"],
+      ["Saudi Arabia","SA"],
+      ["Senegal","SN"],
+      ["Serbia","RS"],
+      ["Seychelles","SC"],
+      ["Sierra Leone","SL"],
+      ["Singapore","SG"],
+      ["Sint Maarten (Dutch part)","SX"],
+      ["Slovakia","SK"],
+      ["Slovenia","SI"],
+      ["Solomon Islands","SB"],
+      ["Somalia","SO"],
+      ["South Africa","ZA"],
+      ["South Georgia","GS"],
+      ["South Sudan","SS"],
+      ["Spain","ES"],
+      ["Sri Lanka","LK"],
+      ["Sudan","SD"],
+      ["Suriname","SR"],
+      ["Swaziland","SZ"],
+      ["Sweden","SE"],
+      ["Switzerland","CH"],
+      ["Syrian Arab Republic","SY"],
+      ["Taiwan Province of China","TW"],
+      ["Tajikistan","TJ"],
+      ["Tanzania United Republic","TZ"],
+      ["Thailand","TH"],
+      ["Timor-Leste","TL"],
+      ["Togo","TG"],
+      ["Tokelau","TK"],
+      ["Tonga","TO"],
+      ["Trinidad and Tobago","TT"],
+      ["Tunisia","TN"],
+      ["Turkey","TR"],
+      ["Turkmenistan","TM"],
+      ["Turks and Caicos Islands","TC"],
+      ["Tuvalu","TV"],
+      ["Uganda","UG"],
+      ["Ukraine","UA"],
+      ["United Arab Emirates","AE"],
+      ["United Kingdom","GB"],
+      ["United States","US"],
+      ["United States Minor Outlying Islands","UM"],
+      ["Uruguay","UY"],
+      ["Uzbekistan","UZ"],
+      ["Vanuatu","VU"],
+      ["Venezuela Bolivarian Republic","VE"],
+      ["Viet Nam","VN"],
+      ["Virgin Islands British","VG"],
+      ["Virgin Islands U.S.","VI"],
+      ["Wallis and Futuna","WF"],
+      ["Western Sahara","EH"],
+      ["Yemen","YE"],
+      ["Zambia","ZM"],
+      ["Zimbabwe","ZW"],
+      ],{}, {:class => "form-control",onchange:"getStats(this.value)", required: true} %>
+
+  </div>
+    <div class="col-md-4 mb-3">
+    <span id="states"></span>
+  </div>
+   <div class="col-md-4">
+         <span id="cities" ></span>
+  </div>
+</div>
+<div class="row mt-3">
+ <div class="col-md-4 mb-3">
+<%= form.text_field :quartier , class:"form-control",placeholder:"Quartier",required:"" %>
+</div>
+</div>
+<div class="row mt-0">
+	<div class="col-md-12 mt-0 mb-2" style="font-size:12px; " ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Remplir les champs uniquement nécessaire.</div>
+</div>
+
+<div class="row mt-0">
+<div class="col-md-6">
+	<label>Je suis </label>
+  <%= form.select :je_suis_le, ["Propriétaire","Agence immobilière","Démarcheur","Annonceur","Particulier"], {}, {:class => 'form-control', required: true} %>
+
+</div>
+  <div class="col-md-6">
+		<label>Téléphone</label>
+	<%= form.text_field :"tel", type:"tel", pattern:"^[0-9-+s()]*$", class: "form-control", placeholder:"Tel.",required:"" %>
+  </div>
+</div>
+
+         <div class="row mt-0">
+  <div class="col-md-12 mb-3">
+  <%=form.label "Description du bien" %>
+    <span  style="color:black; text-shadow:0px 0px 0px;" >
+
+        <textarea name="annonce[description]"  class="form-control" placeholder="Déscription du bien" cols="80" rows="10" data-sample="1"  data-sample-short="true" id="annonces_description"  required >
+          <% if !@annonce.description.nil?%>
+                  <option value="<%= @annonce.description%>"><%= @annonce.description%></option>
+          <%end%>
+
+        </textarea>
+
+    </span>
+	<script data-sample="1">
+		CKEDITOR.replace( 'annonces_description', {
+			// Define the toolbar groups as it is a more accessible solution.
+			toolbarGroups: [
+				{"name":"basicstyles","groups":["basicstyles"]},
+				{"name":"links","groups":["links"]},
+				{"name":"paragraph","groups":["list","blocks"]},
+				{"name":"document","groups":["mode"]},
+				{"name":"insert","groups":["insert"]},
+				{"name":"styles","groups":["styles"]},
+				{"name":"about","groups":["about"]}
+			],
+			// Remove the redundant buttons from toolbar groups defined above.
+			removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+		} );
+	</script>
+  </div>
+  </div>
+
+ <div class="row mt-0" style="border:solid 0px black;" >
+
+<div class="row  ml-0 mr-0 ">
+    <div class="row">
+	    <div class="col-md-12 mt-0 mb-2 ml-2" style="font-size:12px; " >
+		   <h4 clss="mr-5" >Liste des photos</h4><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Vous pouvez télécharger un maximum de 6 images
+		</div>
+	</div>
+</div>
+<%=form.file_field :photos, multiple:true, class:"d-none" %>
+<div class="row  ml-0 mr-0 ">
+	<div class="col-md-4"  >
+		<div class="image-upload">
+			<label for="annonce_photos_1">
+				<div class="upload-icon">
+					<img class="icon" src="/img/61112.png">
+					<img class="prev" src="/img/61112.png">
+				</div>
+		    </label>
+            <input type="file" name="annonce[photos][]", id="annonce_photos_1", accept=".png,.jpg,gif" />
+		</div>
+    </div>
+	<div class="col-md-4"  >
+		<div class="image-upload">
+			<label for="annonce_photos_2">
+				<div class="upload-icon">
+					<img class="icon" src="/img/61112.png">
+					<img class="prev" src="/img/61112.png">
+				</div>
+		    </label>
+            <input type="file" name="annonce[photos][]", id="annonce_photos_2", accept=".png,.jpg,gif" />
+		</div>
+    </div>
+	<div class="col-md-4"  >
+		<div class="image-upload">
+			<label for="annonce_photos_3">
+				<div class="upload-icon">
+					<img class="icon" src="/img/61112.png">
+					<img class="prev" src="/img/61112.png">
+				</div>
+		    </label>
+            <input type="file" name="annonce[photos][]", id="annonce_photos_3", accept=".png,.jpg,gif" />
+		</div>
+    </div>
+	<div class="col-md-4"  >
+		<div class="image-upload">
+			<label for="annonce_photos_4">
+				<div class="upload-icon">
+					<img class="icon" src="/img/61112.png">
+					<img class="prev" src="/img/61112.png">
+				</div>
+		    </label>
+            <input type="file" name="annonce[photos][]", id="annonce_photos_4", accept=".png,.jpg,gif" />
+		</div>
+    </div>
+	<div class="col-md-4"  >
+		<div class="image-upload">
+			<label for="annonce_photos_5">
+				<div class="upload-icon">
+					<img class="icon" src="/img/61112.png">
+					<img class="prev" src="/img/61112.png">
+				</div>
+		    </label>
+            <input type="file" name="annonce[photos][]", id="annonce_photos_5", accept=".png,.jpg,gif" />
+		</div>
+    </div>
+	<div class="col-md-4"  >
+		<div class="image-upload">
+			<label for="annonce_photos_6">
+				<div class="upload-icon">
+					<img class="icon" src="/img/61112.png">
+					<img class="prev" src="/img/61112.png">
+				</div>
+		    </label>
+            <input type="file" name="annonce[photos][]", id="annonce_photos_6", accept=".png,.jpg,gif" />
+		</div>
+    </div>
+
+	</div>
+</div>
+
+<script>function readURL(input) {
+var id = $(input).attr("id");
+
+if (input.files && input.files[0]) {
+  var reader = new FileReader();
+
+  reader.onload = function(e) {
+    $('label[for="' + id + '"] .upload-icon').css("border", "none");
+    $('label[for="' + id + '"] .icon').hide();
+    $('label[for="' + id + '"] .prev').attr('src', e.target.result).show();
+  }
+  reader.readAsDataURL(input.files[0]);
+}
+}
+$("input[id^='annonce_photos_']").change(function() {readURL(this);}
+
+);
+
+</script>
+<!-------------------- ------------------>
+</div>
+</div>
+
+
+  <!-------------------------- DEBUT ACCESSIBILITES  ------------------------->
+  <div class="card bg-light text-dark  mt-2">
+    <div class="card-body">
+      <b class="card-title" style="font-size:2vw;" >Accessibilités</b>
+
+				<div class="row mt-0">
+				 <div class="col-md-12 mt-0 mb-2" style="font-size:12px; " ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Les indispensables aux alentours de 100 m</div>
+				</div>
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'hopital', @annonce.hopital, @annonce.hopital ,class:"form-check-input", id:"inlineCheckbox_hopital" %>
+		  		  <label class="form-check-label" for="inlineCheckbox_hopital">Hopital</label> &nbsp; &nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'marche', @annonce.marche, @annonce.marche ,class:"form-check-input", id:"inlineCheckbox_marche" %>
+		  		  <label class="form-check-label" for="inlineCheckbox_marche">Marché</label> &nbsp; &nbsp;
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'ecole', @annonce.ecole, @annonce.ecole ,class:"form-check-input", id:"inlineCheckbox_ecole" %>
+		  		  <label class="form-check-label" for="inlineCheckbox_ecole">École</label> &nbsp; &nbsp;
+		</div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'hopital', @annonce.service_public, @annonce.service_public ,class:"form-check-input", id:"inlineCheckbox_service_public" %>
+		  <label class="form-check-label" for="inlineCheckbox_service_public">Services publiques</label>&nbsp;&nbsp;
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'aeroport', @annonce.aeroport, @annonce.aeroport ,class:"form-check-input", id:"inlineCheckbox_aeroport" %>
+		  <label class="form-check-label" for="inlineCheckbox_aeroport">Aéroport</label>&nbsp;&nbsp;
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'aeroport', @annonce.supermarche, @annonce.supermarche ,class:"form-check-input", id:"inlineCheckbox_supermarche" %>
+		  <label class="form-check-label" for="inlineCheckbox_supermarche"> Supermarché</label>&nbsp;&nbsp;
+		</div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'hotel', @annonce.hotel, @annonce.hotel ,class:"form-check-input", id:"inlineCheckbox_hotel" %>
+     <label class="form-check-label" for="inlineCheckbox_hotel">Hotel</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'bar_restaurant', @annonce.bar_restaurant, @annonce.bar_restaurant ,class:"form-check-input", id:"inlineCheckbox_bar_restaurant" %>
+		  <label class="form-check-label" for="inlineCheckbox_bar_restaurant">Bar/Restaurant</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+       <%= check_box_tag 'mairie', @annonce.mairie, @annonce.mairie ,class:"form-check-input", id:"inlineCheckbox_mairie" %>
+		  <label class="form-check-label" for="inlineCheckbox_mairie">Mairie </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+       <%= check_box_tag 'centre_de_loisir', @annonce.centre_de_loisir, @annonce.centre_de_loisir ,class:"form-check-input", id:"inlineCheckbox_centre_de_loisir" %>
+		  <label class="form-check-label" for="inlineCheckbox_centre_de_loisir">Centre de loisirs</label>&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+         <%= check_box_tag 'pharmacie', @annonce.pharmacie, @annonce.pharmacie ,class:"form-check-input", id:"inlineCheckbox_pharmacie" %>
+		  <label class="form-check-label" for="inlineCheckbox_pharmacie">Pharmacie</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+         <%= check_box_tag 'pressing', @annonce.pressing, @annonce.pressing ,class:"form-check-input", id:"inlineCheckbox_pressing" %>
+		  <label class="form-check-label" for="inlineCheckbox_pressing">Pressing</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+         <%= check_box_tag 'plage', @annonce.plage, @annonce.plage ,class:"form-check-input", id:"inlineCheckbox_plage" %>
+		  <label class="form-check-label" for="inlineCheckbox_plage">Plage </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+         <%= check_box_tag 'station_d_essence', @annonce.station_d_essence, @annonce.station_d_essence ,class:"form-check-input", id:"inlineCheckbox_station_d_essence" %>
+		  <label class="form-check-label" for="inlineCheckbox_station_d_essence">Station d'essence </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+         <%= check_box_tag 'gare_routiere', @annonce.gare_routiere, @annonce.gare_routiere ,class:"form-check-input", id:"inlineCheckbox_gare_routiere" %>
+		  <label class="form-check-label" for="inlineCheckbox_gare_routiere">Gare routière</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+</div>
+<br/>
+
+
+</div></div>
+
+ <!-----------------------------------  FIN ACCESSIBILITES ------------------------------------->
+
+
+
+  <!-------------------------- DEBUT CARACTÉRISTIQUES ET COMMODITÉS  ------------------------->
+
+  <div class="card bg-light text-dark  mt-2 mb-5">
+    <div class="card-body"><b class="card-title" style="font-size:2vw;" >Caractéristiques et commodités</b>
+
+
+            <div class="row mb-2">
+			   <div class="col-md-6 mb-0">
+                <div class="row">
+									<div class="col-md-6" >
+										<label>Superficie</label>
+										<%= form.text_field :superficie, class:"form-control" , placeholder:"en m²", title:"Superficie total en m²" %>
+									</div>
+				  <div class="col-md-6" >
+						<label>Nbr Ménage</label>
+                  <%= form.select :nbr_menage, [ "0","1","2","3","4","5","6","7","8","9","10"], {}, {:class => 'form-control',title:"Nombre total de ménage dans la cours commune."} %>
+				  </div>
+
+			    </div>
+				</div>
+				<div class="col-md-6 mb-0">
+
+				<div class="row">
+					 <div class="col-md-6" >
+						 <label>Nbr Chambre</label>
+           <%= form.select :chambre, [ "0","1","2","3","4","5","6","7","8","9","10"], {}, {:class => 'form-control',title:"Nombre total de chambre"} %>
+          </div>
+
+				  <div class="col-md-6"  style="padding-bottom:0px; margin-bottom:-15px;" >
+						<label>Nbr Salon</label>
+           <%= form.select :salon, [ "0","1","2","3","4","5","6","7","8","9","10"], {}, {:class => 'form-control',title:"Nombre total de salon"} %>
+          </div>
+				</div>
+				</div>
+			</div>
+			<!--------------- new row ---------------------------->
+            <div class="row mb-2">
+			   <div class="col-md-6 mb-0">
+                <div class="row">
+				  <div class="col-md-6"   >
+						<label>Nbr Cusine</label>
+            <%= form.select :cuisine, [ "0","1","2","3","4","5","6","7","8","9","10"], {}, {:class => 'form-control',title:"Nombre total de cuisine"} %>
+				  </div>
+
+									<div class="col-md-6" >
+										<label>Nbr Douche</label>
+										<%= form.select :douche, [ "0","1","2","3","4","5","6","7","8","9","10"], {}, {:class => 'form-control',title:"Nombre total de douche"} %>
+									</div>
+			    </div>
+				</div>
+				<div class="col-md-6 mb-0">
+
+				<div class="row">
+
+
+				  <div class="col-md-6"  style="padding-bottom:0px; margin-bottom:-15px;" >
+						<label>Nbr WC</label>
+				   <%= form.select :wc,[ "0","1","2","3","4","5","6","7","8","9","10"], {}, {:class => 'form-control',title:"Nombre total de WC"} %>
+
+          </div>
+
+					<div class="col-md-6" >
+						<label>Situation</label>
+						<%= form.select  :situe_dans, [ "Situé dans","Agglomération","Centre ville ","Périphérie" ], {}, {:class => 'form-control',title:"Nombre total de cuisine"} %>
+					</div>
+				</div>
+				</div>
+			</div>
+
+	<div class="row mt-0">
+				 <div class="col-md-12 mt-0 mb-2" style="font-size:12px; " ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Ce logement dispose de : </div>
+				</div>
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+         <%= check_box_tag 'climatisation', @annonce.climatisation, @annonce.climatisation ,class:"form-check-input", id:"inlineCheckbox_Climatisation" %>
+		  		  <label class="form-check-label" for="inlineCheckbox_Climatisation">Climatisation</label> &nbsp; &nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'brasseur', @annonce.brasseur, @annonce.brasseur ,class:"form-check-input", id:"inlineCheckbox_brasseur" %>
+		  		  <label class="form-check-label" for="inlineCheckbox_brasseur">Brasseur/Ventilo</label> &nbsp; &nbsp;
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'parking', @annonce.parking, @annonce.parking ,class:"form-check-input", id:"inlineCheckbox_parking" %>
+		  		  <label class="form-check-label" for="inlineCheckbox_parking">Parking/garage</label> &nbsp; &nbsp;
+		</div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'electricite', @annonce.electricite, @annonce.electricite ,class:"form-check-input", id:"inlineCheckbox_electricite" %>
+		  <label class="form-check-label" for="inlineCheckbox_electricite"> Électricité</label>&nbsp;&nbsp;
+		</div>
+    </div>
+
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'eau', @annonce.eau, @annonce.eau ,class:"form-check-input", id:"inlineCheckbox_eau" %>
+		  <label class="form-check-label" for="inlineCheckbox_eau">Eau</label>&nbsp;&nbsp;
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'voirie', @annonce.voirie, @annonce.voirie ,class:"form-check-input", id:"inlineCheckbox_voirie" %>
+		  <label class="form-check-label" for="inlineCheckbox_voirie">Voirie</label>&nbsp;&nbsp;
+		</div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'terrasse', @annonce.terrasse, @annonce.terrasse ,class:"form-check-input", id:"inlineCheckbox_Terrasse" %>
+		  <label class="form-check-label" for="inlineCheckbox_Terrasse">Terrasse</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'jardin', @annonce.jardin, @annonce.jardin ,class:"form-check-input", id:"inlineCheckbox_jardin" %>
+		  <label class="form-check-label" for="inlineCheckbox_jardin">Jardin</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'meubles', @annonce.meubles, @annonce.meubles ,class:"form-check-input", id:"inlineCheckbox_meubles" %>
+      <label class="form-check-label" for="inlineCheckbox_meubles">Meubles </label>&nbsp;&nbsp;
+		</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'tv', @annonce.tv, @annonce.tv ,class:"form-check-input", id:"inlineCheckbox_tv" %>
+	  <label class="form-check-label" for="inlineCheckbox_tv">Tv </label>&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'cours', @annonce.cours, @annonce.cours ,class:"form-check-input", id:"inlineCheckbox_cours" %>
+		  <label class="form-check-label" for="inlineCheckbox_cours">Cours</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'machine_a_laver', @annonce.machine_a_laver, @annonce.machine_a_laver ,class:"form-check-input", id:"inlineCheckbox_machine_a_laver" %>
+		  <label class="form-check-label" for="inlineCheckbox_machine_a_laver">Machine à laver</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'chauffe_eau_toilette', @annonce.chauffe_eau_toilette, @annonce.chauffe_eau_toilette ,class:"form-check-input", id:"inlineCheckbox_chauffe_eau_toilette" %>
+		  <label class="form-check-label" for="inlineCheckbox_chauffe_eau_toilette">Chauffe eau <small>toilette</small> </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'station_d_essence', @annonce.station_d_essence, @annonce.station_d_essence ,class:"form-check-input", id:"inlineCheckbox_deebarras" %>
+		  <label class="form-check-label" for="inlineCheckbox_deebarras">Débarras </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'placards', @annonce.placards, @annonce.placards ,class:"form-check-input", id:"inlineCheckbox_placards" %>
+		  <label class="form-check-label" for="inlineCheckbox_placards">Placards</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+</div>
+
+<!---------------------------- COuverture reseau /internet  ---------------------------->
+				<div class="row mt-2">
+				 <div class="col-md-12 mt-0 mb-2" style="font-size:12px; " ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Couverture réseaux mobile / internet : </div>
+				</div>
+<div class="row">
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'fibre_optique', @annonce.fibre_optique, @annonce.fibre_optique ,class:"form-check-input", id:"inlineCheckbox_fibre_optique" %>
+		  <label class="form-check-label" for="inlineCheckbox_fibre_optique">Fibre optique </label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'adsl', @annonce.adsl, @annonce.adsl ,class:"form-check-input", id:"inlineCheckbox_adsl" %>
+		  <label class="form-check-label" for="inlineCheckbox_adsl">ADSL</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'reseaux_mobile', @annonce.reseaux_mobile, @annonce.reseaux_mobile ,class:"form-check-input", id:"inlineCheckbox_reseau_mobile" %>
+		  <label class="form-check-label" for="inlineCheckbox_reseau_mobile">Réseaux mobile</label>&nbsp;&nbsp;
+		</div>
+    </div>
+</div>
+<div class="row mb-3" >
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'tel', @annonce.sat, @annonce.sat ,class:"form-check-input", id:"inlineCheckbox_tel" %>
+		  <label class="form-check-label" for="inlineCheckbox_tel">Ligne téléphonique</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+
+
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'wimax', @annonce.wimax, @annonce.wimax ,class:"form-check-input", id:"inlineCheckbox_Wimax" %>
+		  <label class="form-check-label" for="inlineCheckbox_Wimax">Wimax</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+    <div class="col-md-4">
+		<div class="form-check form-check-inline">
+      <%= check_box_tag 'blr', @annonce.blr, @annonce.blr ,class:"form-check-input", id:"inlineCheckbox_blr" %>
+		  <label class="form-check-label" for="inlineCheckbox_blr">Radio BLR</label>&nbsp;&nbsp;
+
+		</div>
+    </div>
+
+</div>
+
+</div></div></div>
+
+ <!-----------------------------------  FIN CACTERISTIQUES ET COMODITES ------------------------------------->
+
+
+
+
+
+
+
+
+
+<div class="col-md-6" >
+
+
+<!-------------------- MODALITES -------------->
+
+<div class="card bg-light text-dark mt-2">
+  <div class="card-body">
+    <b class="card-title" style="font-size:2vw;"> Modalités </b>
+
+				<div class="row mt-0">
+				 <div class="col-md-12 mt-0 mb-2" style="font-size:12px; " ><i class="fa fa-info-circle" style="padding:0px !important; margin:5px !important; padding-right:10px !important; width:5px;" ></i> Remplir les champs uniquement nécessaire.</div>
+				</div>
+				 <div class="row">
+				  <div class="col-md-6 mb-3">
+						<label> Prix/loyer par mois</label>
+					<%= form.number_field :prix, class:"form-control" , placeholder:"Prix (FCFA) " ,required:"" %>
+				  </div>
+				<div class="col-md-6 mb-3">
+					<label>Votre commission en FCFA</label>
+					<%= form.number_field :commission_agence, class:"form-control" , placeholder:" Commission agence (FCFA) "  %>
+				  </div>
+
+				</div>
+			<div class="row">
+				  <div class="col-md-6 mb-3">
+				<label>Caution electricité / Eau</label>
+					<%= form.number_field :caution_electricite_eau, class:"form-control" , placeholder:"Caution Électricité/Eau (FCFA)"  %>
+				  </div>
+				<div class="col-md-6 mb-0">
+				<div class="row">
+
+				  <div class="col-md-6"  style="padding-bottom:0px; margin-bottom:-15px;" >
+						<label>Condition</label>
+				   <%= form.select :condition, ["Aucune","Avance","Contrat" ] , {}, {:class => 'form-control', required: true} %>
+				  </div>
+					<div class="col-md-6" >
+						<label>Nbr mois</label>
+						<%= form.select :minimum, ["0 Mois ","1 Mois ","2 Mois ","3 Mois ","4 Mois ","5 Mois ","6 Mois ","7 Mois ","8 Mois ","9 Mois ","10 Mois ","11 Mois ","1 An " ,"2 Ans " ], {}, {:class => 'form-control', required: true} %>
+					</div>
+				</div>
+				</div>
+			</div>
+
+</div></div>
+
+
+  <!-------------------------- FIN DES MODALITES  ------------------------->
+
+
+  <div class="card bg-light text-dark mt-2">
+    <div class="card-body">
+      <b class="card-title" style="font-size:2vw;">Géolocalisation du bien immobilier</b>
+    <div id="Map" style="height:370px; background-image:url(/img/activity.gif); background-repeat:no-repeat; background-position: 50% 50%; background-size:256px 256px;" ></div>
+  </div>
+  <div class="row ml-auto mr-auto ">
+  <div class="col-md-6  mb-3">
+      <label class="ml-2"  for="validationServer01">Longitude</label>
+          <%= form.text_field :localisation_longitude, class:"form-control", placeholder:"Longitude", id:"long" , readonly:true%>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-6  mb-3">
+      <label class="ml-2" for="validationServer02">Latitude</label>
+      <%= form.text_field :localisation_latitude, class:"form-control", placeholder:"Latitude" , id:"lat" , readonly:true %>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+ </div>
+
+ </div>
+
+ <div class="col-md-12">
+<br/>
+    <%= form.hidden_field :user_id , value: current_user.id %>
+  <div class="actions">
+    <%= form.submit class:" ml-0 mr-0 col-12 btn  NewannonceSubmitBtn ", value:"Publier l'annonce" %>
+  </div>
+
+</div>
+ </div>
+
+
+
+ <% end %>
+<br/><br/>
+	 </div>

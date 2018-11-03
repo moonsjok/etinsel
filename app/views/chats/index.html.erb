@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+<style><!-- ul{list-style-type:none;}--></style>
+    <div class="row clearfix">
+        <div class="people-list col-xl-3 col-lg-3 col-sm-3 col-md-3 col-xs-3" id="people-list">
+          <div class="search">
+            <input type="text" placeholder="Recherche" />
+            <!-- i class="fa fa-search"></i -->
+          </div>
+          <ul class="list">
+
+              <%
+			  #for online in @users_online 
+			  %>
+            <li class="clearfix  ">
+              <img src="<%=
+			  #online[2] 
+			  %>" alt="avatar"  width="50" height="50"/>
+              <div class="about">
+                <div class="name"><%= 
+				#online[1]
+				%></div>
+                <div class="status">
+                  <i class="fa fa-circle online"></i> En ligne
+                </div>
+              </div>
+            </li>
+              <%
+			  #end 
+			  %>
+
+          </ul>
+        </div>
+
+        <div class="  col-xl-9 col-lg-9 col-sm-9 col-md-9 col-xs-9 chat">
+
+
+          <div class="chat-header clearfix">
+            <img src="/img/inconnu.png" width="80" height="80" alt="avatar" />
+
+            <div class="chat-about">
+              <div class="chat-with"><h3> <b float="right" >Tchat public</b>   <%= 
+			  #@publictchats_count 
+			  %> message(s) </h3></div>
+              <div class="chat-num-messages">
+                  <%= Time.now.strftime("%d-%m-%Y")%>
+                  &nbsp;
+
+              </div>
+            </div>
+            <i class="fa fa-star"></i>
+          </div> <!-- end chat-header -->
+
+            <div class="chat-history" id="chat-history">
+                 <ul>
+				    <!-- <% 
+					#render @messages 
+					%> -->
+				 <ul>
+            </div> <!-- end chat-history -->
+
+          <div class="chat-message clearfix">
+
+            <textarea name="message-to-send" id="message-to-send" placeholder ="Taper votre message ici" rows="3"></textarea>
+
+          </div> <!-- end chat-message -->
+        </div> <!-- end chat -->
+      </div> <!-- end my-container -->
+

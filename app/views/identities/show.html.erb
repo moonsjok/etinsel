@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Typeannonceur:</strong>
+  <%= @identity.typeannonceur %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @identity.name %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @identity.country %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @identity.city %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @identity.adress %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @identity.zip %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @identity.about %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @identity.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_identity_path(@identity) %> |
+<%= link_to 'Back', identities_path %>

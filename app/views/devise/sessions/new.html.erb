@@ -1,0 +1,64 @@
+<!-------------------------------------------------------- LE MODALL -------------------------------------->
+<!------------ Sign in and sign up modal content -------------->
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/regform/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <!-- Main css -->
+    <link rel="stylesheet" href="/regform/css/style.css">
+<div class="row sign_in_and_sign_up__header_title">
+  <div class="col-md-12 h-100 "  >
+    <br>
+    <h1 style="font-size:5vw; padding:0px; margin:0px;  margin-left:50px;"  >Se connecter </h1>
+  </div>
+</div>
+<!-- Modal body -->
+<div class="modal-body mt-5 mb-5">
+
+          <div class="signin-content"  style:"width:600px; !important">
+              <div class="signin-image">
+                  <figure><img src="/regform/images/signin-image.jpg" alt="sing up image"></figure>
+                  <a href="<%= new_user_registration_path %>" class="signup-image-link" >Créer un compte</a>
+              </div>
+              <div class="signin-form">
+
+               <%= form_for(resource, as: resource_name, url: session_path(resource_name),class:"register-form", id:"login-form") do |f| %>
+                      <div class="form-group" style="width:50%;" >
+                          <label for="user_login"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <%= f.text_field :login, placeholder:"Login", 'data-toggle' => "tooltip", 'data-placement' => "bottom", 'title'=>"Nom d'utilisateur ou numéro de téléphone ou email", required:true %>
+                      </div>
+                      <div class="form-group"  style="width:50%;">
+                          <label for="user_password"><i class="zmdi zmdi-lock"></i></label>
+                          <%= f.password_field :password,  placeholder:"Mot de passe",required:true %>
+                      </div>
+
+
+        <% if devise_mapping.rememberable? -%>
+            <div class="form-group"  style="width:50%;">
+                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                <label for="remember-me" class="label-agree-term"><span><span></span></span>Rester connecté</label>
+            </div>
+        <% end -%>
+                      <div class="form-group form-button text-center"  style="width:50%;">
+                          <input type="submit"  id="signin" class="form-submit font-weight-bold" value="Se connecter"  name="commit"  data-disable-with="Log in"  />
+                      </div>
+                  <%end%>
+                  <!--
+                  <h4 class="text-center mt-3 mb-3" ><span class="social-label">Ou connectez-vous avec</span><h4>
+      <div class="social-login border border-2 border-danger">
+        <div class="form-group form-button text-center">
+            <center>
+          <ul class="socials mr-auto ml-auto">
+            <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+            <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+          </ul>
+          </center>
+          </div>
+                  </div>
+      -->
+              </div>
+          </div>
+
+
+
+
+</div>

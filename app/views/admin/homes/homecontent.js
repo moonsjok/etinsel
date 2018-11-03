@@ -1,0 +1,1 @@
+$('#homeContent').html('<%= render home_annonces %>')
