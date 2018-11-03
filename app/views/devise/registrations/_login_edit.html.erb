@@ -1,0 +1,104 @@
+
+<div class="row">
+
+		<div class="col-md-12 order-md-1">
+
+            <%= form_for(@user, url: registration_path(@user), html: { method: :put,class:"needs-validation", novalidate:true }) do |f| %>
+
+
+
+      <div class="mb-3">
+        <label for="username">Nom d'utilisateur</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-fw fa-user"></i></span>
+          </div>
+          <%= f.text_field :username, class:"form-control" %>
+          <div class="invalid-feedback" style="width: 100%;">
+            Un nom d'utilisateur valide est requit
+          </div>
+        </div>
+      </div>
+
+        <div class="mb-3">
+          <label for="username">Numéro de téléphone </label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-fw fa-phone"></i></span>
+            </div>
+                <%= f.text_field :phonenumber, class:"form-control", require:true %>
+            <div class="invalid-feedback" style="width: 100%;">
+              Your username is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="username">Email </label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-fw fa-envelope"></i></span>
+            </div>
+                <%= f.email_field :email, class:"form-control", require:true %>
+            <div class="invalid-feedback" style="width: 100%;">
+              Your username is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+            </div>
+                  <%= f.password_field :password, autocomplete: "new-password" , class:"form-control"%>
+            <div class="invalid-feedback" style="width: 100%;">
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+        <%= f.label :password_confirmation %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+            </div>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" , class:"form-control"%>
+            <div class="invalid-feedback" style="width: 100%;">
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+            </div>
+                  <%= f.password_field :current_password, autocomplete: "new-password" , class:"form-control"%>
+          </div>
+        </div>
+
+
+              <div class="actions">
+                <%= f.submit "Enrégistrer les modifications" , class:"btn btn-block btn-warning btn-lg text-white" %>
+              </div>
+            <% end %>
+
+            <h3>Je veux me désinscrire</h3>
+
+            <p><%= button_to "Supprimer mon compte", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete , class:"btn btn-block btn-danger btn-lg text-white"  %></p>
+
+
+        </div>
+      </div>

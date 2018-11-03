@@ -1,0 +1,236 @@
+<div class="row jumbotron"
+    style="height: 250px; border:solid 0px black; background-image:url(<%=@wall_pic_Photo_file%>); background-size:cover; background-repeat:no-repeat; background-position:center;"
+  >
+  <div class="" style=" cursor:pointer; position:absolute; right: 0px; top:80px; width:80px; padding:10px; margin-top:0px; background-color:rgba(0,0,0,0.5);" data-toggle="modal" data-target="#wall_picModal" data-title="wall_pic">
+      <center><b style="margin-top:10px; ">Changer</b></center>
+ </div>
+          <div class="col-sm-2 " >
+            <div class="card" style="border:solid 2px white;  width:200px; height:200px; margin-bottom:-100px; background-image:url(<%=@profil_pic_Photo_file%>); background-size:cover; background-repeat:no-repeat; background-position:center;">
+             <div class="" style="cursor:pointer; width:100%; height:50px; margin-top: 160px; background-color:rgba(0,0,0,0.5);"  data-toggle="modal" data-target="#profil_picModal" data-title="profil_pic">
+                 <center><b style="margin-top:10px; ">Changer</b></center>
+            </div>
+            </div>
+          </div>
+          <div class="col-sm-10">
+
+          </div>
+</div>
+<div class="row">
+    <div class="col-md-3 order-md-1" >
+      <ul class="_list-group" style="margin:0px; padding:0px; border-radius:0px;">
+        <a href="/monprofil" class="list-group-item">Mon profil</a>
+				        <a href="<%=mesannonces_path%>" class="list-group-item">Mes annonces</a>
+        <a href="/monprofil/messages" class="list-group-item">Messages</a>
+        <a href="/monprofil/chats" class="list-group-item">Chats</a>
+      </ul>
+
+
+      <div class="" id="people-list">
+        <!-- <div class="search">
+          <input type="text" placeholder="Recherche" />
+          <!-- i class="fa fa-search"></i -->
+        <!-- </div> -->
+
+        <ul class="list">
+
+            <%for online in @users_online %>
+          <li class="clearfix  ">
+            <img src="<%= online[2] %>" alt="avatar"  width="50" height="50" align="middle"/>
+            <%= online[1] %>
+                <i class="fa fa-circle online"></i> En ligne
+
+          </li>
+            <%end %>
+
+        </ul>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div class="col-md-9 order-md-2 bg-white">
+
+
+<div class="container-fluid" class="container-fluid" >
+<br/>
+<h1 style="font-size:50px; font-weight:bold;" >Listes de vos annonces</h1>
+<hr style="width:200px; border:solid 3px red;  " />
+
+<style><!--
+table#dataTables {
+	background: #f5f5f5;
+	### border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	### font-size: 12px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: left;
+	### width: 800px;
+}
+
+table#dataTables th {
+	background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+  font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;
+}
+
+table#dataTables th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
+}
+
+table#dataTables th:first-child {
+	border-left: 1px solid #777;
+	box-shadow: inset 1px 1px 0 #999;
+}
+
+table#dataTables th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+}
+
+table#dataTables td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+table#dataTables td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}
+
+table#dataTablestd:last-child {
+	border-right: 1px solid #e8e8e8;
+	box-shadow: inset -1px 0 0 #fff;
+}
+
+table#dataTables tr {
+	background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+table#dataTables tr:nth-child(odd) td {
+	background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+table#dataTables tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff;
+}
+
+table#dataTables tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}
+
+table#dataTables tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}
+
+table#dataTables tbody:hover td {
+	color: transparent;
+	text-shadow: 0 0 3px #aaa;
+}
+
+table#dataTables tbody:hover tr:hover td {
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+}
+.reset-this {
+paginate_button:none;
+}
+--></style>
+<div class="card">
+<div class="card-header"> <span style="float:right">
+<a href="<%=new_annonce_path %>" class="btn btn-warning" ><i class="fa fa-plus " style="font-size:30px; padding:0px; margin:0px;"  ></i></a>
+
+</span></div>
+<div class="card-body">
+<table id="dataTables" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%; color:black; font-weight:bold;">
+  <thead>
+    <tr>
+      <th>Categorie</th>
+      <th>Sous categorie</th>
+      <th>Designation</th>
+      <!--th>Descritpion</th-->
+      <th>Prix ou louer</th>
+      <th>Pays</th>
+      <th>Ville village quartier</th>
+      <!--th>Localisation longitude</th-->
+      <!--th>Localisation latitude</th-->
+      <!--th>Slug</th-->
+      <!--th>user</th-->
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Annonce.where(user_id: current_user.id).each do |annonce_| %>
+      <tr>
+        <td><%= annonce_.categorie %></td>
+        <td><%= annonce_.sous_categorie %></td>
+        <td><%= annonce_.designation %></td>
+        <!--td><%= annonce_.description %></td-->
+        <td><%= annonce_.prix %></td>
+        <td><%= annonce_.pays %></td>
+        <td><%= annonce_.ville %></td>
+        <!--td><%= annonce_.localisation_longitude %></td-->
+        <!--td><%= annonce_.localisation_latitude %></td-->
+
+        <!--td><%= annonce_.user_id %></td -->
+        <td width="100px;">
+		<style><!-- i.fa{width:20px; padding:0px; } --></style>
+
+        <%= form_tag(annonce_, method: "delete") do %>
+           <a href="/annonces/<%= annonce_.id %>"><i class="fa fa-eye"></i></a>
+           <a href="<%= edit_annonce_path(annonce_) %>" ><i class="fa fa-edit"></i></a>
+          <button type="submit" name="commit" style="border:none; background:none; color:red; float:right; padding:0px; margin:0px;" >
+          <i class="fa fa-fw fa-trash-o " ></i></button>
+        <% end %>
+
+      </td>
+	 </tr>
+
+
+    <% end %>
+  </tbody>
+</table>
+</div></div>
+<br>
+<%= link_to "Nouvelle annonce ", new_annonce_path %>
+<br>
+
+<br><br>
+</div>
+
+</div>
+</div>

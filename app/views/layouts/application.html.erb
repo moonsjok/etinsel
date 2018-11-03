@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Moonsjok for TRIOOTI" />
+    <meta name="copyright" content="&copy; ETINSEL" />
+    <title>
+           ETINSEL - <%= @pagetitle %>
+
+    </title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+    <meta http-equiv="Last-Modified" content="" />
+    <link rel="icon" href="/img/favicon.ico" />
+
+    <%= render "layouts/partials/metaProperty"  %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application' %>
+	   <link rel="stylesheet" href="/css/reset.min.css" rel="stylesheet">
+    <%= javascript_include_tag 'application' %>
+
+    <!-- Bootstrap core CSS -->
+  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FLAG -->
+<link href="/css/flags.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--	<link rel="stylesheet" href="/dist/css/bootstrap-select.css">-->
+	<!-- <script src="/dist/js/jquery.3.3.1.min.js"></script> -->
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/dist/js/bootstrap-select.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
+	<link href="/css/jumbotron.css" rel="stylesheet">
+	<script src="https://cdn.ckeditor.com/4.10.1/standard-all/ckeditor.js"></script>
+
+	    <script language="javascript">
+
+      /* SET COUNTRY */
+			function setpaystrie(country) {
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+				    // alert(country)
+          document.location.reload();
+				 document.getElementById("pays").innerHTML = xhttp.responseText;
+				}
+			  };
+			  xhttp.open("GET", "/ajax/"+country+"/setpays/", true);
+			  xhttp.send();
+			}
+			/* get states or region */
+
+			function getStats(country) {
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+				 document.getElementById("states").innerHTML = xhttp.responseText;
+				}
+			  };
+			  xhttp.open("GET", "/ajax/"+country+"/states/", true);
+			  xhttp.send();
+			}
+			//getStates("US")
+           /* get cities*/
+			function getCities(state,country) {
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+				 document.getElementById("cities").innerHTML = xhttp.responseText;
+				}
+			  };
+			  xhttp.open("GET", "/ajax/"+country+"/"+state+"/cities", true);
+			  xhttp.send();
+			}
+        </script>
+        	<% if  params[:controller] == "annonces" %>
+		    <%= render "layouts/partials/locationPicker"  %>
+	<% end %>
+
+<style><!--#notice{display:none;}--></style>
+
+
+
+  </head>
+  <body onload="init()" >
+  <!-- MailerLite Universal -->
+  <script>
+  (function(m,a,i,l,e,r){ m['MailerLiteObject']=e;function f(){
+  var c={ a:arguments,q:[]};var r=this.push(c);return "number"!=typeof r?r:f.bind(c.q);}
+  f.q=f.q||[];m[e]=m[e]||f.bind(f.q);m[e].q=m[e].q||f.q;r=a.createElement(i);
+  var _=a.getElementsByTagName(i)[0];r.async=1;r.src=l+'?v'+(~~(new Date().getTime()/1000000));
+  _.parentNode.insertBefore(r,_);})(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+
+  var ml_account = ml('accounts', '1265506', 'w2x3u8r4d2', 'load');
+  </script>
+  <!-- End MailerLite Universal -->
+
+<%= render "layouts/partials/hNavbar" %>
+<!-- search popup ----------->
+  <div id="myOverlay" class="overlay" style="display:none;" >
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+<!------------------ end of search poop up ------------------->
+<script>
+function openSearch() {
+    document.getElementById("myOverlay").style.display = "block";
+}
+
+function closeSearch() {
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+    <div class="container-fluid">
+
+      <% if flash[:notice]%>
+<div class="alert">
+<div class="alert-info text-center mb-0 mt-0 jello" style="padding:10px;">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+  <b  class="">
+  <%- if flash[:notice].to_s == "Signed out successfully." %>
+      <%= "Déconnection réussit" %>
+  <%- elsif flash[:notice].to_s == "Successfully authenticated from Google account."%>
+      <%= "Authentifié avec succès à partir d'un compte Google." %>
+  <%- elsif flash[:notice].to_s ==  "Successfully authenticated from Facebook account." %>
+      <%= "Authentifié avec succès à partir d'un compte Facebook." %>
+  <%- elsif flash[:notice].to_s == "You are already signed in." %>
+      <%= "Vous êtes déjà connecté." %>
+            <%- elsif flash[:notice].to_s == "Invalid Email or password." %>
+      <%= "Email ou mot de passe invalide." %>
+  <%- elsif  flash[:notice].to_s ==  "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."%>
+      <%= "Un message avec un lien de confirmation a été envoyé à votre adresse e-mail.<br/> Veuillez suivre le lien pour activer votre compte."%>
+  <%- elsif  flash[:notice].to_s ==  "You have to confirm your email address before continuing."%>
+      <%= "Vous devez confirmer votre adresse e-mail avant de continuer." %>
+  <%- elsif flash[:notice].to_s ==  "Invalid Login or password."%>
+                <%= "Login ou mot de passe invalide." %>
+  <%- elsif flash[:notice].to_s ==  "Signed in successfully." %>
+                <%= "Connection réussi" %>
+  <%- elsif flash[:notice].to_s ==  "Invalid Login or password." %>
+                <%= "Login ou mot de passe invalide." %>
+  <%- elsif flash[:notice].to_s ==  "Welcome! You have signed up successfully."%>
+          <%= "Bienvenue! Vous vous êtes inscrit avec succès." %>
+  <%- else %>
+                <%= flash[:notice] %>
+  <% end %>
+  </b>
+</div>
+</div>
+<% end%>
+<% if flash[:alert]%>
+<div class="alert-warning">
+<div class="alert text-center mb-0 mt-0"  style="padding:10px;" >
+  <button type="button" class="close" data-dismiss="alert">x</button>
+  <b class="rubberBand" ><%= alert %></b>
+</div>
+</div>
+<% end%>
+
+<% if flash[:error] %>
+<div class="alert-danger">
+<div class="alert text-center mb-0 mt-0"  style="padding:10px;" >
+  <button type="button" class="close" data-dismiss="alert">x</button>
+  <b class="rubberBand" ><%= flash[:error] %></b>
+</div>
+</div>
+<% end%>
+
+            <%= yield %>
+</div>
+    	   <%= render "layouts/partials/footer"  %>
+
+  </body>
+</html>

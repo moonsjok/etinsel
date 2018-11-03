@@ -1,0 +1,9 @@
+I"Ì(function() {
+  App.chatpublic = App.cable.subscriptions.create("ChatpublicChannel", {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {}
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,97 @@
+
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light " style="background:rgb(228,77, 33);"  >
+        <a class="navbar-brand" href="/">
+	        <img src="/img/logo.png"  width="90" height="40" align="middle" />
+		   </a>
+       <a href="#" class="text-white"  data-toggle="modal" data-target="#monModal"  >
+         <span id="pays">
+            <%if @Pays[session[:pays]].blank?%>
+                 Pays <i class="fa fa-angle-down"></i>
+                <%else%>
+              <%=@Pays[session[:pays]].to_s %><i class="fa fa-angle-down"></i>
+            <%end%>
+       </span>
+       </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center " id="navbarsExample05">
+			<div class="mr-auto ml-auto">
+
+			<form class="form-inline my-2 my-lg-0 ml-auto mr-auto d-none d-xl-block d-lg-block" action="/annonces/" method="get" >
+        <div class="col-auto pl-0">
+    					<div class="input-group">
+                <input name="sous_categorie" type="text" class="form-control" id="navFormInput-Search"  placeholder="Recherche ..."  data-toggle="tooltip" data-placement="bottom" title="Mot clef ou terme à recherché" >
+    						<input class="btn btn-success my-2 my-sm-0" id="navFormInput-Submit" type="submit" value="" />
+    					</div>
+				</div>
+		    </form>
+
+			</div>
+		<ul class="navbar-nav ">
+							<% if user_signed_in? %>
+							     <li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								 <!-- <i class="fa fa-user" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i>--> Mon compte
+								</a>
+								<div class="dropdown-menu arrow_box" aria-labelledby="navbarDropdownMenuLink"  >
+								    <a class="dropdown-item" data-turbolinks="false" href="<%= new_annonce_path %>">Publier</a>
+									<a class="dropdown-item" href="<%=mesannonces_path %>">Mes annonces</a>
+									<a class="dropdown-item" href="/monprofil">Mon profil</a>
+									<%= link_to("Se déconnecter", destroy_user_session_path , method: :delete , class:"dropdown-item") %>
+								</div>
+							</li>
+							<% end %>
+
+              <li class="nav-item">
+            <a class="nav-link" href="<%= annonces_path %>">
+            <!-- <i class="fa fa-bullhorn" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
+            Immobilier</a>
+          </li>
+
+
+
+							<li class="nav-item">
+							  <a href="<%= publictchats_path %>" class="nav-link">
+								<!-- <i class="fa fa-comments" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
+								Rencontre</a>
+							</li>
+							<li class="nav-item">
+								<a href="<%= user_session_path %>" class="nav-link">
+								<!-- <i class="fa fa-file-text" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
+								Actualité</a>
+                            </li>
+<% if user_signed_in? %>
+<% else %>
+                <li  class="nav-item" >
+				<a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal" >
+				<!-- <i class="fa fa-user" style="width:10px; padding:0px; margin:0px; margin-right:5px; " ></i>  -->
+				Se connecter </a></li>
+				<li  class="nav-item" ><a href="<%= new_user_registration_path %>"   data-turbolinks="false"  class="nav-link"  >
+				<!-- <i class="fa fa-user" style="width:10px; padding:0px; margin:0px; margin-right:5px; " ></i> -->
+				S'inscrire
+				</a></li>
+<% end  %>
+					        <li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								  À propos
+								</a>
+								<div class="dropdown-menu arrow_box" aria-labelledby="navbarDropdownMenuLink" style="left:-90px;">
+									<a class="dropdown-item" href="<%=quisommesnous_path %>">Qui sommes-nous?</a>
+									<a class="dropdown-item" href="<%=commentcamarche_path %>">Fonctionnement</a>
+									<a class="dropdown-item" href="<%=new_contact_path %>">Nous contacter</a>
+								</div>
+							</li>
+
+							<% if user_signed_in? %>
+							    <li  class="nav-item" >
+									<a class="nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">
+									<!-- <i class="fa fa-sign-out"></i> -->
+									Se déconnecter</a>
+								</li>
+							<%end%>
+        </ul>
+
+      </div>
+    </nav>

@@ -1,0 +1,27 @@
+I"Ç(function() {
+  App.chat = App.cable.subscriptions.create("ChatChannel", {
+    speak: function(user_id, message) {
+      return this.perform('speak', {
+        user_id: user_id,
+        message: message
+      });
+    },
+    connected: function() {
+      return $(document).on('keypress', '#message-to-send', (function(_this) {
+        return function(event) {
+          if (event.keyCode === 13) {
+            alert($("#user_id").value);
+            event.target.value = "";
+            return event.preventDefault();
+          }
+        };
+      })(this));
+    },
+    disconnected: function() {},
+    received: function(data) {
+      return $('#chat-history').append(data.message);
+    }
+  });
+
+}).call(this);
+:ET

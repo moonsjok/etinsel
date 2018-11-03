@@ -1,0 +1,46 @@
+I"ë(function() {
+  App.chat = App.cable.subscriptions.create("ChatChannel", {
+    speak: function(message) {
+      return this.perform('speak', {
+        message: message
+      });
+    },
+    connected: function() {
+      return $(document).on('keypress', '#message-to-send', (function(_this) {
+        return function(event) {
+          if (event.keyCode === 13) {
+            _this.speak(event.target.value);
+            event.target.value = "";
+            return event.preventDefault();
+          }
+        };
+      })(this));
+    },
+    disconnected: function() {},
+    received: function(data) {
+      return $('#chat-history ul').append(data.message);
+    }
+  });
+
+  App.chat = App.cable.subscriptions.create("ErrorsChannel", {
+    received: function(data) {
+      var $errors, error, html, i, len, ref, results;
+      html = '';
+      ref = data.errors;
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        error = ref[i];
+        html += "<li>" + error + "</li>";
+        $errors = $('#errors');
+        $errors.find('.text').html(html);
+        $errors.slideDown();
+        results.push(setTimeout((function() {
+          return errors.slideUp();
+        }), 3000));
+      }
+      return results;
+    }
+  });
+
+}).call(this);
+:ET
