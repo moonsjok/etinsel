@@ -27,8 +27,6 @@
 <link href="/css/flags.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--	<link rel="stylesheet" href="/dist/css/bootstrap-select.css">-->
-	<!-- <script src="/dist/js/jquery.3.3.1.min.js"></script> -->
     <script src="/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="/dist/js/bootstrap-select.js"></script>
     <!-- Custom styles for this template -->
@@ -44,7 +42,9 @@
 			  xhttp.onreadystatechange = function() {
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
 				    // alert(country)
-          document.location.reload();
+
+						    document.location.reload();
+
 				 document.getElementById("pays").innerHTML = xhttp.responseText;
 				}
 			  };

@@ -4,18 +4,24 @@
 				<div class="row">
 					<div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 ">
 		    <form method="GET" style="padding:0px; margin:0px; ">
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 					  <select name="prix" class="form-control form-control-lg" style="border:solid 2px rgb(228,77,32);  color:rgb(228,77,32);"  onchange="submit()" >
 							<option value="" >Prix</option>
-							<option value="BETWEEN 0 AND 50000" >ENTRE 0 ET 50000</option>
-							<option value="BETWEEN 50001 AND 100000" >ENTRE 50001 ET 100000</option>
-							<option value="BETWEEN 100001 AND 250000" >ENTRE 100001 ET 250000</option>
-							<option value="BETWEEN  250001 AND 1000000" >ENTRE  250001 ET 1000000</option>
-							<option value=">=1000000" >Superieur ou égale à 1000000</option>
+							<option value="prix = (SELECT MIN(prix) FROM annonces)" >MINIMUM</option>						
+							<!-- <option value="prix BETWEEN 0 AND 50000" >ENTRE 0 ET 50000</option> -->
+							<!-- <option value="prix BETWEEN 50001 AND 100000" >ENTRE 50001 ET 100000</option> -->
+							<!-- <option value="prix BETWEEN 100001 AND 250000" >ENTRE 100001 ET 250000</option> -->
+							<!-- <option value="prix BETWEEN  250001 AND 1000000" >ENTRE  250001 ET 1000000</option> -->
+							<!-- <option value="prix >=1000000" >Superieur ou égale à 1000000</option> -->
+							
+							
+							<option value="prix = (SELECT MAX(prix) FROM annonces)" >MAXIMUM</option>
 						</select>
 			</form>
 					</div>
 					<div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 ">
 		    <form method="GET"  style="padding:0px; margin:0px; " >
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 					<select name="offre" class="form-control form-control-lg text-white"  style="border: solid 2px rgb(228, 77 , 32); background-color:rgb(228,77,32);" onchange="submit()" >
 							<option value=""  >Offres </option>
 						<% for annoncesC in Annonce.select(:categorie).distinct %>
@@ -26,18 +32,19 @@
 						</select>
 			</form>
 					</div>
-					<div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 ">
-		    <form method="GET" style="padding:0px; margin:0px; " >
-						<select  name="demande" class="form-control form-control-lg "  style="border: solid 2px rgb(228, 77 , 32); color : rgb(228,77,32);"  onchange="submit()" >
-							<option  value="" >Demandes</option>
-                        <% for annonces in Annonce.select(:categorie).distinct %>
-							<%- if annonces.categorie == "demande" %>
-							    <option value="<%= annonces.categorie %>"><%= annonces.categorie %></option>
-							<% end %>
-                        <% end %>
-                        </select>
-			</form>
-					</div>
+					<!-- <div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 "> -->
+						<!-- <form method="GET" style="padding:0px; margin:0px; " > -->
+						<!-- <%= hidden_field_tag :authenticity_token, form_authenticity_token -%> -->
+						<!-- <select  name="demande" class="form-control form-control-lg "  style="border: solid 2px rgb(228, 77 , 32); color : rgb(228,77,32);"  onchange="submit()" > -->
+							<!-- <option  value="" >Demandes</option> -->
+                        <!-- <% for annonces in Annonce.select(:categorie).distinct %> -->
+							<!-- <%- if annonces.categorie == "demande" %> -->
+							    <!-- <option value="<%= annonces.categorie %>"><%= annonces.categorie %></option> -->
+							<!-- <% end %> -->
+                        <!-- <% end %> -->
+                        <!-- </select> -->
+							<!-- </form> -->
+					<!-- </div> -->
 				</div>
 	    <hr style="padding:0px; margin:0px; " />
 	    </div>
@@ -45,7 +52,7 @@
       <div class="container">
 
 	  <br/>
-	  <h3>Plus de <%= Annonce.all.count %> annonces .</h3>
+	  <!-- <h3>Plus de <%= Annonce.all.count %> annonces .</h3> -->
         <!-- Example row of columns -->
         <div class="row">
 
@@ -101,9 +108,9 @@
 			<p class="ml-2 mr-2 mt-3 mb-3" >
 			<b><a style="color:black; Text-Transform: capitalize; text-decoration:none;" href="/annonces/<%= annonce.id %>"><%= annonce.designation %></a></b>
 <% if annonce.valide == false %>
-     <span class="badge badge-pill badge-warning "><b>&nbsp;&nbsp;Nous n'avons pas encore vérifiée&nbsp;&nbsp;</b></span>
+     <br/><span class="badge badge-pill badge-warning "><b>&nbsp;&nbsp;Non vérifiée&nbsp;&nbsp;</b></span>
 <%elsif annonce.valide == true %>
-     <span class="badge badge-pill badge-success "><b>&nbsp;&nbsp;Annonce vérifiée&nbsp;&nbsp;</b></span>
+     <br/><span class="badge badge-pill badge-success "><b>&nbsp;&nbsp;Annonce vérifiée&nbsp;&nbsp;</b></span>
 <%end%>
      <a href="/annonces/<%= annonce.id %>" class="badge badge-secondary">Consulter l'annonce >> </a>
 </p>

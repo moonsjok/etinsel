@@ -6,9 +6,15 @@ class ApplicationController < ActionController::Base
     def configure_devise_parameters
       if !params[:user].nil?
         ## JUSTE POUR AJOUTER L'INDICATIF AU NUMERO DE TELEPHONE SAISI LORS DE L'INSCRIPTION
-         params[:user][:phonenumber] = params[:user][:indicatif].to_s+params[:user][:phonenumber].to_s.gsub(' ','')
+        params[:user][:phonenumber] = params[:user][:indicatif].to_s+params[:user][:phonenumber].to_s.gsub(' ','')
       end
-         devise_parameter_sanitizer.permit(:sign_up){|u| u.permit(:email,:username,:phonenumber,:password,:password_confirmation)}
+      if !params[:administrateur].nil?
+        ## JUSTE POUR AJOUTER L'INDICATIF AU NUMERO DE TELEPHONE SAISI LORS DE L'INSCRIPTION
+        params[:administrateur][:phonenumber] = params[:administrateur][:indicatif].to_s+params[:administrateur][:phonenumber].to_s.gsub(' ','')
+      end
+
+
+      devise_parameter_sanitizer.permit(:sign_up){|u| u.permit(:email,:username,:phonenumber,:password,:password_confirmation)}
     end
 
 
@@ -76,7 +82,11 @@ class ApplicationController < ActionController::Base
 
 
     def after_sign_in_path_for(resource)
+      if resource.is_a?(User)
         monprofil_path
+      elsif resource.is_a?(Administrateur)
+          admin_homes_path
+      end
     end
 
 

@@ -28,7 +28,7 @@
 
         <div class="form-group">
 					<label for="user_username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-          <%= form.text_field :username, placeholder:"Pseudo", 'data-toggle' => "tooltip", 'data-placement' =>"bottom" ,'title' =>"Il sera principalement utilisé pour les tchats", required:true  %>
+          <%= form.text_field :username, placeholder:"Login", 'data-toggle' => "tooltip", 'data-placement' =>"bottom" ,'title' =>"Il sera principalement utilisé pour les tchats", required:true  %>
         </div>
 				<div class="form-group">
 				<table ><tr><td width="10%"><label for="user_indicatif"><i class="fa fa-country"></i></label></td>
@@ -258,7 +258,7 @@
           </td>
 					<td width="60%">
 					<label for="user_phonenumber"><i class="fa fa-phone"></i></label>
-          <%= form.text_field :phonenumber,  pattern:"^[0-9].{8,}", placeholder:"Numéro de phone", 'data-toggle' => "tooltip", 'data-placement' =>"bottom" ,'title' =>"Le N° de Tel. permettra aux clients de vous contacter plus rapidement.", required:true  %>
+          <%= form.text_field :phonenumber,  pattern:"^[0-9].{7,}", placeholder:"Numéro de phone", 'data-toggle' => "tooltip", 'data-placement' =>"bottom" ,'title' =>"Le N° de Tel. permettra aux clients de vous contacter plus rapidement.", required:true  %>
 					</td>
 				</tr>
 				</table>
@@ -271,12 +271,12 @@
 
       	</div>
 				<div class="form-group">
-					<label for="user_password"><i class="zmdi zmdi-lock"></i></label>
-					<input type="password" name="user[password]" id="user_password" placeholder="Password"  data-toggle="tooltip" data-placement="bottom" title="<% if @minimum_password_length %>(<%= @minimum_password_length %> caractaires minimum)<%end%>" required />
+					<%= form.label :Mot_de_passe  do %><i class="zmdi zmdi-lock"></i><%end%>
+					<%= form.password_field :password, placeholder:"Password",  required:true %>
 
 				</div>
 				<div class="form-group">
-					<label for="user_password_confirmation"><i class="zmdi zmdi-lock-outline"></i></label>
+					<%= form.label :Confirmation_du_mot_de_passe do %><i class="zmdi zmdi-lock-outline"></i><%end%>
 					<input type="password" placeholder="Confirmation mot de passe" type="password" name="user[password_confirmation]" id="user_password_confirmation" data-toggle="tooltip" data-placement="bottom" title="veuillez confirmer votre mot de passe " required />
 				</div>
 				<div class="form-group mb-0">

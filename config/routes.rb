@@ -4,14 +4,14 @@ Rails.application.routes.draw do
         resources :homes
         resources :pages
         resources :users
-        # resources :identities
+        resources :identities
         resources :annonces
         resources :annoncesmiseenavants
         resources :messages
         # resources :chats
         # resources :photos
         # resources :publictchats
-
+		resources :administrateurs
         root to: "homes#index"
     end
       resources :annoncesmiseenavants
@@ -31,11 +31,15 @@ Rails.application.routes.draw do
 
 
 
-      devise_for :users, controllers: {
+    devise_for :users, path: 'users', controllers: {
         sessions: 'users/sessions',
         #registrations: 'users/registrations'
     }
-
+    devise_for :administrateurs, path: 'administrateurs' 
+	# , controllers: {
+        # sessions: 'administrateurs/sessions',
+        # registrations: 'administrateurs/registrations'
+    # }
 
       #LES PAGES DONT L'ACCES EST PROTEGES
       authenticated :user do

@@ -24,6 +24,7 @@ By default, it renders:
   <%= render "stylesheet" %>
   <!-- Bootstrap core CSS -->
   <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
   <script src="/dist/js/jquery.3.3.1.min.js"></script>
   <%= csrf_meta_tags %>
   <script>
@@ -49,13 +50,15 @@ By default, it renders:
   <div class="toHeader" style="width:100%; height:100px; background-color:RGB(246, 247 , 247); ">
     <table width="100%">
       <tr style="hover:none; cursor:pointer;">
-        <td align="left" valign="center" width="150"><img src="/img/logo.png"  width="100" height="50" align="middle"  style="border:solid 0px black;"/></td>
-        <td align="left" valign="center">
+        <td width="200" align="left" valign="center" width="150"><img src="/img/logo.png"  width="100" height="50" align="middle"  style="border:solid 0px black;"/></td>
+        <td align="center" valign="center">
           <h5 style="padding:0px !important; margin:0px !important; width:100%;">
-             <b>ADMINISTRATEUR</b>
-            <b style="float:right; font-size:10px;">Version beta</b>
+             <b><%=current_administrateur['username'] %></b>
+
           </h5>
+          <b style="text-align: center; font-size:10px;"><span style="font-size:12px;">ADMINISTRATEUR</span> Version beta</b>
         </td>
+        <td  width="200" > <%=link_to destroy_administrateur_session_path do %> Se déconnecter <i class="fa fa-sign-out"></i><%end %></td>
       </tr>
     </table>
   </div>

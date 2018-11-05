@@ -8,47 +8,47 @@ class AnnoncesController < ApplicationController
     @user=current_user
     			if session[:sous_categorie].blank? && session[:pays].blank?
             		if params[:prix].to_s != "" && params[:demande].to_s == "" && params[:offre].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where("prix "+params[:prix].to_s).order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(params[:prix].to_s).order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		elsif params[:demande].to_s != ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]).order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]).order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif  params[:offre].to_s != ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]).order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]).order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif @annonces.nil?
-            			 @annonces = Annonce.select(:id, :designation, :valide).order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 end
 
     			elsif !session[:sous_categorie].blank? && !session[:pays].blank?
 
             		if params[:prix].to_s != "" && params[:demande].to_s == "" && params[:offre].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where("prix "+params[:prix].to_s+"AND pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(params[:prix].to_s+"AND pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		elsif params[:demande].to_s != "" && params[:prix].to_s == "" && params[:offre].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]+"AND pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]+"AND pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif  params[:offre].to_s != "" && params[:demande].to_s == "" && params[:prix].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]+"AND pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]+"AND pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif @annonces.nil?
-            			 @annonces = Annonce.select(:id, :designation, :valide).where("pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where("pays='"+session[:pays]+"' AND sous_categorie ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 end
     			elsif session[:sous_categorie].blank? && !session[:pays].blank?
            		   if params[:prix].to_s != "" && params[:demande].to_s == "" && params[:offre].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where("prix "+params[:prix].to_s+"AND pays='"+session[:pays]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(params[:prix].to_s+"AND pays='"+session[:pays]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		elsif params[:demande].to_s != "" && params[:prix].to_s == "" && params[:offre].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]+"AND pays='"+session[:pays]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]+"AND pays='"+session[:pays]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif  params[:offre].to_s != "" && params[:demande].to_s == "" && params[:prix].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]+"AND pays='"+session[:pays]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]+"AND pays='"+session[:pays]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif @annonces.nil?
-            			 @annonces = Annonce.select(:id, :designation, :valide).where("pays='"+session[:pays]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where("pays='"+session[:pays]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 end
 
     			elsif !session[:sous_categorie].blank? && session[:pays].blank?
 
             		if params[:prix].to_s != "" && params[:demande].to_s == "" && params[:offre].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where("prix "+params[:prix].to_s+"sous_categorie  ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(params[:prix].to_s+"sous_categorie  ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		elsif params[:demande].to_s != "" && params[:prix].to_s == "" && params[:offre].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]+"sous_categorie  ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:demande]+"sous_categorie  ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif  params[:offre].to_s != "" && params[:demande].to_s == "" && params[:prix].to_s == ""
-            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]+"AND sous_categorie ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where(categorie: params[:offre]+"AND sous_categorie ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 elsif @annonces.nil?
-            			 @annonces = Annonce.select(:id, :designation, :valide).where("sous_categorie  ='"+session[:sous_categorie]+"'").order("id DESC").limit(params[:end]).offset(params[:start])
+            			 @annonces = Annonce.select(:id, :designation, :valide).where("sous_categorie  ='"+session[:sous_categorie]+"'").order("categorie,sous_categorie,ville,prix ASC").limit(params[:end]).offset(params[:start])
             		 end
 
 end
