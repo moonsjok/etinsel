@@ -68,6 +68,11 @@ end
        @online = '<div class="font-weight-bold " ><span class="text-warning">L\'annonceur est deconnecté ;</span> laisser lui un message .</div>'
     end
     @annonceur = Identity.find_by(user_id: @annonce.user_id)
+	if session[:pays].nil?
+		Vue.create(annonce_id: params[:id])
+	else
+	    Vue.create(annonce_id: params[:id],pays: session[:pays])
+	end
   end
 
   # GET /annonces/new
@@ -93,7 +98,7 @@ end
              Identity.new(user_id: current_user.id).save
              format.html { redirect_to monprofil_path('identiter'), notice: "L'annonce a été créée avec succès. <br/> Veuillez completer maintenant votre identité." }
           else
-              format.html { redirect_to @annonce, notice: "L\'annonce a été créée avec succès." }
+              format.html { redirect_to @annonce, notice: "L'annonce a été créée avec succès." }
               format.json { render :show, status: :created, location: @annonce }
           end
       else

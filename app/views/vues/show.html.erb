@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Annonce:</strong>
+  <%= @vue.annonce %>
+</p>
+
+<p>
+  <strong>Pays:</strong>
+  <%= @vue.pays %>
+</p>
+
+<p>
+  <strong>Ville:</strong>
+  <%= @vue.ville %>
+</p>
+
+<p>
+  <strong>Quartier:</strong>
+  <%= @vue.quartier %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @vue.user %>
+</p>
+
+<%= link_to 'Edit', edit_vue_path(@vue) %> |
+<%= link_to 'Back', vues_path %>

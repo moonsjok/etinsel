@@ -419,8 +419,9 @@ $('.dataTables_filter>label').addClass('text-right');
 	<% if session[:pays].nil? || session[:pays].to_s.blank? %>
     <script type="text/javascript">
     $.get("http://ipinfo.io", function(response){
-      setpaystrie(response.country);
-      //$("#pays").html([response.country);
+      //setpaystrie(response.country);
+	    sessionStorage.setItem("pays", response.country);
+        $("#pays").html(sessionStorage.getItem("pays"));
     }, "jsonp");
     </script>
 <% end  %>

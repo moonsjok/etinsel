@@ -6,8 +6,9 @@ class Administrateur < ApplicationRecord
   validates :email, length: { minimum: 0 },uniqueness:{case_insensitive:true},allow_blank:true, allow_nil:true
   validates :phonenumber,presence:true,uniqueness:{case_insensitive:true},format:{with: /\A[0-9 +]{5,20}\z/}
   validates :username,uniqueness:{case_insensitive:true},format:{ with: /\A[a-zA-Z0-9]{6,20}\z/,message: "Ce nom d'utilisateur n'est pas valide!" }
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
+		 #:registerable,
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

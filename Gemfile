@@ -74,3 +74,5 @@ gem 'administrate-field-active_storage'
 gem 'administrate-field-image'
 gem 'trix'
 
+######################################## compteur de visite  ######################################
+gem 'punching_bag', '~> 0.6.0'

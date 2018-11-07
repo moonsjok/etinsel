@@ -21,7 +21,6 @@
 					</div>
 					<div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 ">
 		    <form method="GET"  style="padding:0px; margin:0px; " >
-			<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 					<select name="offre" class="form-control form-control-lg text-white"  style="border: solid 2px rgb(228, 77 , 32); background-color:rgb(228,77,32);" onchange="submit()" >
 							<option value=""  >Offres </option>
 						<% for annoncesC in Annonce.select(:categorie).distinct %>
@@ -33,9 +32,9 @@
 			</form>
 					</div>
 					<!-- <div class=" col-xl-3 col-lg-3 col-md-4 col-sm-4 mt-3 mb-3 "> -->
-						<!-- <form method="GET" style="padding:0px; margin:0px; " > -->
-						<!-- <%= hidden_field_tag :authenticity_token, form_authenticity_token -%> -->
-						<!-- <select  name="demande" class="form-control form-control-lg "  style="border: solid 2px rgb(228, 77 , 32); color : rgb(228,77,32);"  onchange="submit()" > -->
+					<!-- <form method="GET" style="padding:0px; margin:0px; " > -->
+					<!-- <%= hidden_field_tag :authenticity_token, form_authenticity_token -%> -->
+								<!-- <select  name="demande" class="form-control form-control-lg "  style="border: solid 2px rgb(228, 77 , 32); color : rgb(228,77,32);"  onchange="submit()" > -->
 							<!-- <option  value="" >Demandes</option> -->
                         <!-- <% for annonces in Annonce.select(:categorie).distinct %> -->
 							<!-- <%- if annonces.categorie == "demande" %> -->
@@ -43,7 +42,7 @@
 							<!-- <% end %> -->
                         <!-- <% end %> -->
                         <!-- </select> -->
-							<!-- </form> -->
+					<!-- </form> -->
 					<!-- </div> -->
 				</div>
 	    <hr style="padding:0px; margin:0px; " />
@@ -107,11 +106,17 @@
 			</div>
 			<p class="ml-2 mr-2 mt-3 mb-3" >
 			<b><a style="color:black; Text-Transform: capitalize; text-decoration:none;" href="/annonces/<%= annonce.id %>"><%= annonce.designation %></a></b>
-<% if annonce.valide == false %>
-     <br/><span class="badge badge-pill badge-warning "><b>&nbsp;&nbsp;Non vérifiée&nbsp;&nbsp;</b></span>
-<%elsif annonce.valide == true %>
-     <br/><span class="badge badge-pill badge-success "><b>&nbsp;&nbsp;Annonce vérifiée&nbsp;&nbsp;</b></span>
-<%end%>
+						<span class="badge badge-pill badge-info ">
+						    <b>
+						        <%= Vue.where(annonce_id: annonce.id).count%>
+						        <i class="fa fa-eye"></i>
+							</b>
+						</span>			
+						<% if annonce.valide == false %>
+							 <br/><span class="badge badge-pill badge-warning "><b>&nbsp;&nbsp;Non vérifiée&nbsp;&nbsp;</b></span>
+						<%elsif annonce.valide == true %>
+							 <br/><span class="badge badge-pill badge-success "><b>&nbsp;&nbsp;Annonce vérifiée&nbsp;&nbsp;</b></span>
+						<%end%>
      <a href="/annonces/<%= annonce.id %>" class="badge badge-secondary">Consulter l'annonce >> </a>
 </p>
 		</div>

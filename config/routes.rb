@@ -14,10 +14,12 @@ Rails.application.routes.draw do
 		resources :administrateurs
         root to: "homes#index"
     end
+	
       resources :annoncesmiseenavants
       resources :publictchats
       resources :contacts , only:[:new,:create]
       resources :messages #PRIVE et PUBLIC
+	  resources :vues #, only:[:new,:create]
       resources :annonces #PRIVE et PUBLIC
       resources :identities  #PRIVE
       resources :photos	   #PRIVE
@@ -28,8 +30,6 @@ Rails.application.routes.draw do
       get 'commentcamarche' =>'publicpages#commentcamarche'
       get 'lesannoncesde(/:id_annonceur)'=>'publicpages#lesannoncesde'
       get 'ajax(/:param0)(/:param1)(/:param2)' =>'myajaxs#ajax' , :as => :myajax
-
-
 
     devise_for :users, path: 'users', controllers: {
         sessions: 'users/sessions',

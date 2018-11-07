@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Annonce</th>
+      <th>Pays</th>
+      <th>Ville</th>
+      <th>Quartier</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vues.each do |vue| %>
+      <tr>
+        <td><%= vue.annonce %></td>
+        <td><%= vue.pays %></td>
+        <td><%= vue.ville %></td>
+        <td><%= vue.quartier %></td>
+        <td><%= vue.user %></td>
+        <td><%= link_to 'Show', vue %></td>
+        <td><%= link_to 'Edit', edit_vue_path(vue) %></td>
+        <td><%= link_to 'Destroy', vue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vue', new_vue_path %>

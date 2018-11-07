@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_173701) do
+ActiveRecord::Schema.define(version: 2018_11_07_183135) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
@@ -183,6 +183,17 @@ ActiveRecord::Schema.define(version: 2018_11_03_173701) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "punches", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "punchable_id", null: false
+    t.string "punchable_type", limit: 20, null: false
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.datetime "average_time", null: false
+    t.integer "hits", default: 1, null: false
+    t.index ["average_time"], name: "index_punches_on_average_time"
+    t.index ["punchable_type", "punchable_id"], name: "punchable_index"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", default: ""
     t.string "username", default: ""
@@ -205,5 +216,17 @@ ActiveRecord::Schema.define(version: 2018_11_03_173701) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "vues", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "annonce_id"
+    t.string "pays"
+    t.string "ville"
+    t.string "quartier"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["annonce_id"], name: "index_vues_on_annonce_id"
+  end
+
   add_foreign_key "annoncesmiseenavants", "annonces"
+  add_foreign_key "vues", "annonces"
 end

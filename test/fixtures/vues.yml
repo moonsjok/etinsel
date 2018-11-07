@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  annonce: one
+  pays: MyString
+  ville: MyString
+  quartier: MyString
+  user: one
+
+two:
+  annonce: two
+  pays: MyString
+  ville: MyString
+  quartier: MyString
+  user: two

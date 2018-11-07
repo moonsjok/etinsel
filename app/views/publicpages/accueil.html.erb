@@ -125,11 +125,18 @@
 
 					<p class="ml-2 mr-2 mt-3 mb-3" >
 			           <b><a style="color:black; Text-Transform: capitalize; text-decoration:none;" href="/annonces/<%= annonce.id %>"><%= annonce.designation %></a></b>
+						<span class="badge badge-pill badge-info ">
+						    <b>
+						        <%= Vue.where(annonce_id: annonce.id).count%>
+						        <i class="fa fa-eye"></i>
+							</b>
+						</span>
 						<% if annonce.valide == false %>
 							 <br/><span class="badge badge-pill badge-warning "><b>&nbsp;&nbsp;Non vérifiée&nbsp;&nbsp;</b></span>
 						<%elsif annonce.valide == true %>
 							 <br/><span class="badge badge-pill badge-success "><b>&nbsp;&nbsp;Annonce vérifiée&nbsp;&nbsp;</b></span>
 						<%end%>
+
                          <a href="/annonces/<%= annonce.id %>" class="badge badge-secondary">Consulter l'annonce >> </a>
                     </p>
 						
