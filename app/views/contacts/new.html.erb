@@ -31,7 +31,12 @@
 		  <div class="form-row">
 			<div class="col-md-12 mb-3">
 			  <label for="validationTooltip05">Sujet</label>
-			  <input name="contact[sujet]" type="text" class="form-control" id="validationTooltip05" placeholder="Quel est le motif de votre message" required>
+			  <input type="text" name="contact[sujet]" class="form-control" id="validationTooltip05"
+			  <% if params[:format].to_s !="" %>
+			    type="text"   value="signaler l'annonce REF:<%=params[:format]%>" readonly required>
+			  <%else%>
+			    placeholder="Quel est le motif de votre message" required>
+			  <%end%>
 
 			</div>
 		  </div>
@@ -40,8 +45,18 @@
 			<div class="h-100" style="padding-bottom:5px;">
 			  <style><!-- textarea{height:84% !important;}--></style>
 			  <label for="validationTooltip05">Message</label>
-			  <textarea name="contact[message]" type="text" class="form-control" id="validationTooltip05" placeholder="Votre message ici! "  required></textarea>
+			  <textarea name="contact[message]" type="text" class="form-control" id="validationTooltip05" placeholder="Votre message ici! "  required><% if params[:format].to_s !="" %>Bonjour ETINSEL je viens par la présente signaler l'annonce REF:<%=params[:format]%> 
+Je me nomme ................................................................... 
+mon numéro de téléphone est ...................................................
+mon adresse email est .........................................................
+je suis ....................................................................... 
+Veuillez trouver ci-dessous les raisons pour lesquelles je signale cette annonce.
 
+			  
+			  <%end%>. 
+			  
+
+			  </textarea>
 			</div>
     </div>
 

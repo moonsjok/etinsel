@@ -12,10 +12,7 @@ class PrivatepagesController < ApplicationController
           @identity=Identity.find_by(user_id:@user.id)
       end
 
-
      @messages = Message.where(destinataire:  @user.id).limit(50).order("created_at DESC")
-
-
 
 
      #FIN DES DECLARATIONS

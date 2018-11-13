@@ -49,7 +49,6 @@
 	    </div>
 
       <div class="container">
-
 	  <br/>
 	  <!-- <h3>Plus de <%= Annonce.all.count %> annonces .</h3> -->
         <!-- Example row of columns -->
@@ -108,7 +107,7 @@
 			<b><a style="color:black; Text-Transform: capitalize; text-decoration:none;" href="/annonces/<%= annonce.id %>"><%= annonce.designation %></a></b>
 						<span class="badge badge-pill badge-info ">
 						    <b>
-						        <%= Vue.where(annonce_id: annonce.id).count%>
+						        <%=annonce.hits%>
 						        <i class="fa fa-eye"></i>
 							</b>
 						</span>			

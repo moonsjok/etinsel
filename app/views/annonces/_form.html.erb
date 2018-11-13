@@ -23,12 +23,12 @@
 <div class="row mt-3">
 <div class="col-md-6">
 <label>Catégorie</label>
-<%= form.select  :categorie, [["Choisissez une catégorie",""],"Vendre","Louer","Colocation","Demander" ],{}, {:class => 'form-control',required: true} %>
+<%= form.select  :categorie, ["Vendre","Louer","Colocation","Demander" ],{}, {:class => 'form-control',required: true} %>
 
 </div>
   <div class="col-md-6">
     <label>Type de bien</label>
-     <%= form.select :sous_categorie, [["Choisissez une sous catégorie",""],"Appartement","Maison","Chambre","Villa","Magasin","Immeuble","Terrain"],{}, {:class => 'form-control', required: true} %>
+     <%= form.select :sous_categorie, ["Appartement","Maison","Chambre","Villa","Magasin","Immeuble","Terrain"],{}, {:class => 'form-control', required: true} %>
   </div>
 </div>
 
@@ -62,7 +62,7 @@
 </div>
   <div class="col-md-6">
 		<label>Téléphone</label>
-	<%= form.text_field :"tel", type:"tel", pattern:"^[0-9-+s()]*$", class: "form-control", placeholder:"Tel.",required:"" %>
+	<%= form.text_field :tel, type:"tel", pattern:"^[0-9-+s()]*$", class: "form-control", placeholder:"Tel.",required:"" %>
   </div>
 </div>
 
@@ -215,20 +215,20 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'hopital', @annonce.hopital, @annonce.hopital ,class:"form-check-input", id:"inlineCheckbox_hopital" %>
+      <%= form.check_box 'hopital' ,class:"form-check-input", id:"inlineCheckbox_hopital" %>
 		  		  <label class="form-check-label" for="inlineCheckbox_hopital">Hopital</label> &nbsp; &nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'marche', @annonce.marche, @annonce.marche ,class:"form-check-input", id:"inlineCheckbox_marche" %>
+      <%= form.check_box 'marche' ,class:"form-check-input", id:"inlineCheckbox_marche" %>
 		  		  <label class="form-check-label" for="inlineCheckbox_marche">Marché</label> &nbsp; &nbsp;
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'ecole', @annonce.ecole, @annonce.ecole ,class:"form-check-input", id:"inlineCheckbox_ecole" %>
+      <%= form.check_box 'ecole' ,class:"form-check-input", id:"inlineCheckbox_ecole" %>
 		  		  <label class="form-check-label" for="inlineCheckbox_ecole">École</label> &nbsp; &nbsp;
 		</div>
     </div>
@@ -238,19 +238,19 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'hopital', @annonce.service_public, @annonce.service_public ,class:"form-check-input", id:"inlineCheckbox_service_public" %>
+      <%= form.check_box 'service_public' ,class:"form-check-input", id:"inlineCheckbox_service_public" %>
 		  <label class="form-check-label" for="inlineCheckbox_service_public">Services publiques</label>&nbsp;&nbsp;
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'aeroport', @annonce.aeroport, @annonce.aeroport ,class:"form-check-input", id:"inlineCheckbox_aeroport" %>
+      <%= form.check_box 'aeroport' ,class:"form-check-input", id:"inlineCheckbox_aeroport" %>
 		  <label class="form-check-label" for="inlineCheckbox_aeroport">Aéroport</label>&nbsp;&nbsp;
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'aeroport', @annonce.supermarche, @annonce.supermarche ,class:"form-check-input", id:"inlineCheckbox_supermarche" %>
+      <%= form.check_box 'supermarche' ,class:"form-check-input", id:"inlineCheckbox_supermarche" %>
 		  <label class="form-check-label" for="inlineCheckbox_supermarche"> Supermarché</label>&nbsp;&nbsp;
 		</div>
     </div>
@@ -260,21 +260,21 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'hotel', @annonce.hotel, @annonce.hotel ,class:"form-check-input", id:"inlineCheckbox_hotel" %>
+      <%= form.check_box 'hotel' ,class:"form-check-input", id:"inlineCheckbox_hotel" %>
      <label class="form-check-label" for="inlineCheckbox_hotel">Hotel</label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'bar_restaurant', @annonce.bar_restaurant, @annonce.bar_restaurant ,class:"form-check-input", id:"inlineCheckbox_bar_restaurant" %>
+      <%= form.check_box 'bar_restaurant' ,class:"form-check-input", id:"inlineCheckbox_bar_restaurant" %>
 		  <label class="form-check-label" for="inlineCheckbox_bar_restaurant">Bar/Restaurant</label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-       <%= check_box_tag 'mairie', @annonce.mairie, @annonce.mairie ,class:"form-check-input", id:"inlineCheckbox_mairie" %>
+       <%= form.check_box 'mairie' ,class:"form-check-input", id:"inlineCheckbox_mairie" %>
 		  <label class="form-check-label" for="inlineCheckbox_mairie">Mairie </label>&nbsp;&nbsp;
 
 		</div>
@@ -284,21 +284,21 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-       <%= check_box_tag 'centre_de_loisir', @annonce.centre_de_loisir, @annonce.centre_de_loisir ,class:"form-check-input", id:"inlineCheckbox_centre_de_loisir" %>
+       <%= form.check_box 'centre_de_loisir',class:"form-check-input", id:"inlineCheckbox_centre_de_loisir" %>
 		  <label class="form-check-label" for="inlineCheckbox_centre_de_loisir">Centre de loisirs</label>&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-         <%= check_box_tag 'pharmacie', @annonce.pharmacie, @annonce.pharmacie ,class:"form-check-input", id:"inlineCheckbox_pharmacie" %>
+         <%= form.check_box 'pharmacie' ,class:"form-check-input", id:"inlineCheckbox_pharmacie" %>
 		  <label class="form-check-label" for="inlineCheckbox_pharmacie">Pharmacie</label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-         <%= check_box_tag 'pressing', @annonce.pressing, @annonce.pressing ,class:"form-check-input", id:"inlineCheckbox_pressing" %>
+         <%= form.check_box 'pressing' ,class:"form-check-input", id:"inlineCheckbox_pressing" %>
 		  <label class="form-check-label" for="inlineCheckbox_pressing">Pressing</label>&nbsp;&nbsp;
 
 		</div>
@@ -308,21 +308,21 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-         <%= check_box_tag 'plage', @annonce.plage, @annonce.plage ,class:"form-check-input", id:"inlineCheckbox_plage" %>
+         <%= form.check_box 'plage' ,class:"form-check-input", id:"inlineCheckbox_plage" %>
 		  <label class="form-check-label" for="inlineCheckbox_plage">Plage </label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-         <%= check_box_tag 'station_d_essence', @annonce.station_d_essence, @annonce.station_d_essence ,class:"form-check-input", id:"inlineCheckbox_station_d_essence" %>
+         <%= form.check_box 'station_d_essence' ,class:"form-check-input", id:"inlineCheckbox_station_d_essence" %>
 		  <label class="form-check-label" for="inlineCheckbox_station_d_essence">Station d'essence </label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-         <%= check_box_tag 'gare_routiere', @annonce.gare_routiere, @annonce.gare_routiere ,class:"form-check-input", id:"inlineCheckbox_gare_routiere" %>
+         <%= form.check_box 'gare_routiere' ,class:"form-check-input", id:"inlineCheckbox_gare_routiere" %>
 		  <label class="form-check-label" for="inlineCheckbox_gare_routiere">Gare routière</label>&nbsp;&nbsp;
 
 		</div>
@@ -412,20 +412,20 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-         <%= check_box_tag 'climatisation', @annonce.climatisation, @annonce.climatisation ,class:"form-check-input", id:"inlineCheckbox_Climatisation" %>
+         <%= form.check_box 'climatisation' ,class:"form-check-input", id:"inlineCheckbox_Climatisation" %>
 		  		  <label class="form-check-label" for="inlineCheckbox_Climatisation">Climatisation</label> &nbsp; &nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'brasseur', @annonce.brasseur, @annonce.brasseur ,class:"form-check-input", id:"inlineCheckbox_brasseur" %>
+      <%= form.check_box 'brasseur' ,class:"form-check-input", id:"inlineCheckbox_brasseur" %>
 		  		  <label class="form-check-label" for="inlineCheckbox_brasseur">Brasseur/Ventilo</label> &nbsp; &nbsp;
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'parking', @annonce.parking, @annonce.parking ,class:"form-check-input", id:"inlineCheckbox_parking" %>
+      <%= form.check_box 'parking' ,class:"form-check-input", id:"inlineCheckbox_parking" %>
 		  		  <label class="form-check-label" for="inlineCheckbox_parking">Parking/garage</label> &nbsp; &nbsp;
 		</div>
     </div>
@@ -435,20 +435,20 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'electricite', @annonce.electricite, @annonce.electricite ,class:"form-check-input", id:"inlineCheckbox_electricite" %>
+      <%= form.check_box 'electricite' ,class:"form-check-input", id:"inlineCheckbox_electricite" %>
 		  <label class="form-check-label" for="inlineCheckbox_electricite"> Électricité</label>&nbsp;&nbsp;
 		</div>
     </div>
 
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'eau', @annonce.eau, @annonce.eau ,class:"form-check-input", id:"inlineCheckbox_eau" %>
+      <%= form.check_box 'eau' ,class:"form-check-input", id:"inlineCheckbox_eau" %>
 		  <label class="form-check-label" for="inlineCheckbox_eau">Eau</label>&nbsp;&nbsp;
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'voirie', @annonce.voirie, @annonce.voirie ,class:"form-check-input", id:"inlineCheckbox_voirie" %>
+      <%= form.check_box 'voirie' ,class:"form-check-input", id:"inlineCheckbox_voirie" %>
 		  <label class="form-check-label" for="inlineCheckbox_voirie">Voirie</label>&nbsp;&nbsp;
 		</div>
     </div>
@@ -458,21 +458,21 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'terrasse', @annonce.terrasse, @annonce.terrasse ,class:"form-check-input", id:"inlineCheckbox_Terrasse" %>
+      <%= form.check_box 'terrasse' ,class:"form-check-input", id:"inlineCheckbox_Terrasse" %>
 		  <label class="form-check-label" for="inlineCheckbox_Terrasse">Terrasse</label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'jardin', @annonce.jardin, @annonce.jardin ,class:"form-check-input", id:"inlineCheckbox_jardin" %>
+      <%= form.check_box 'jardin',class:"form-check-input", id:"inlineCheckbox_jardin" %>
 		  <label class="form-check-label" for="inlineCheckbox_jardin">Jardin</label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'meubles', @annonce.meubles, @annonce.meubles ,class:"form-check-input", id:"inlineCheckbox_meubles" %>
+      <%= form.check_box 'meubles' ,class:"form-check-input", id:"inlineCheckbox_meubles" %>
       <label class="form-check-label" for="inlineCheckbox_meubles">Meubles </label>&nbsp;&nbsp;
 		</div>
     </div>
@@ -481,21 +481,21 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'tv', @annonce.tv, @annonce.tv ,class:"form-check-input", id:"inlineCheckbox_tv" %>
+      <%= form.check_box 'tv' ,class:"form-check-input", id:"inlineCheckbox_tv" %>
 	  <label class="form-check-label" for="inlineCheckbox_tv">Tv </label>&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'cours', @annonce.cours, @annonce.cours ,class:"form-check-input", id:"inlineCheckbox_cours" %>
+      <%= form.check_box 'cours' ,class:"form-check-input", id:"inlineCheckbox_cours" %>
 		  <label class="form-check-label" for="inlineCheckbox_cours">Cours</label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'machine_a_laver', @annonce.machine_a_laver, @annonce.machine_a_laver ,class:"form-check-input", id:"inlineCheckbox_machine_a_laver" %>
+      <%= form.check_box 'machine_a_laver',class:"form-check-input", id:"inlineCheckbox_machine_a_laver" %>
 		  <label class="form-check-label" for="inlineCheckbox_machine_a_laver">Machine à laver</label>&nbsp;&nbsp;
 
 		</div>
@@ -505,21 +505,21 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'chauffe_eau_toilette', @annonce.chauffe_eau_toilette, @annonce.chauffe_eau_toilette ,class:"form-check-input", id:"inlineCheckbox_chauffe_eau_toilette" %>
+      <%= form.check_box 'chauffe_eau_toilette' ,class:"form-check-input", id:"inlineCheckbox_chauffe_eau_toilette" %>
 		  <label class="form-check-label" for="inlineCheckbox_chauffe_eau_toilette">Chauffe eau <small>toilette</small> </label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'station_d_essence', @annonce.station_d_essence, @annonce.station_d_essence ,class:"form-check-input", id:"inlineCheckbox_deebarras" %>
+      <%= form.check_box 'station_d_essence' ,class:"form-check-input", id:"inlineCheckbox_deebarras" %>
 		  <label class="form-check-label" for="inlineCheckbox_deebarras">Débarras </label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'placards', @annonce.placards, @annonce.placards ,class:"form-check-input", id:"inlineCheckbox_placards" %>
+      <%= form.check_box 'placards' ,class:"form-check-input", id:"inlineCheckbox_placards" %>
 		  <label class="form-check-label" for="inlineCheckbox_placards">Placards</label>&nbsp;&nbsp;
 
 		</div>
@@ -533,7 +533,7 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row">
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'fibre_optique', @annonce.fibre_optique, @annonce.fibre_optique ,class:"form-check-input", id:"inlineCheckbox_fibre_optique" %>
+      <%= form.check_box 'fibre_optique' ,class:"form-check-input", id:"inlineCheckbox_fibre_optique" %>
 		  <label class="form-check-label" for="inlineCheckbox_fibre_optique">Fibre optique </label>&nbsp;&nbsp;
 
 		</div>
@@ -541,7 +541,7 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'adsl', @annonce.adsl, @annonce.adsl ,class:"form-check-input", id:"inlineCheckbox_adsl" %>
+      <%= form.check_box 'adsl' ,class:"form-check-input", id:"inlineCheckbox_adsl" %>
 		  <label class="form-check-label" for="inlineCheckbox_adsl">ADSL</label>&nbsp;&nbsp;
 
 		</div>
@@ -549,7 +549,7 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'reseaux_mobile', @annonce.reseaux_mobile, @annonce.reseaux_mobile ,class:"form-check-input", id:"inlineCheckbox_reseau_mobile" %>
+      <%= form.check_box 'reseaux_mobile' ,class:"form-check-input", id:"inlineCheckbox_reseau_mobile" %>
 		  <label class="form-check-label" for="inlineCheckbox_reseau_mobile">Réseaux mobile</label>&nbsp;&nbsp;
 		</div>
     </div>
@@ -557,8 +557,8 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 <div class="row mb-3" >
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'tel', @annonce.sat, @annonce.sat ,class:"form-check-input", id:"inlineCheckbox_tel" %>
-		  <label class="form-check-label" for="inlineCheckbox_tel">Ligne téléphonique</label>&nbsp;&nbsp;
+      <%= form.check_box 'sat' ,class:"form-check-input", id:"inlineCheckbox_sat" %>
+		  <label class="form-check-label" for="inlineCheckbox_sat">Ligne téléphonique</label>&nbsp;&nbsp;
 
 		</div>
     </div>
@@ -566,14 +566,14 @@ $("input[id^='annonce_photos_']").change(function() {readURL(this);}
 
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'wimax', @annonce.wimax, @annonce.wimax ,class:"form-check-input", id:"inlineCheckbox_Wimax" %>
+      <%= form.check_box 'wimax' ,class:"form-check-input", id:"inlineCheckbox_Wimax" %>
 		  <label class="form-check-label" for="inlineCheckbox_Wimax">Wimax</label>&nbsp;&nbsp;
 
 		</div>
     </div>
     <div class="col-md-4">
 		<div class="form-check form-check-inline">
-      <%= check_box_tag 'blr', @annonce.blr, @annonce.blr ,class:"form-check-input", id:"inlineCheckbox_blr" %>
+      <%= form.check_box 'blr' ,class:"form-check-input", id:"inlineCheckbox_blr" %>
 		  <label class="form-check-label" for="inlineCheckbox_blr">Radio BLR</label>&nbsp;&nbsp;
 
 		</div>

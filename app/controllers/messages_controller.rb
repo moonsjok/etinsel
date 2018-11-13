@@ -42,8 +42,12 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { 
-			    redirect_to "/annonces/"+params[:message][:annonce_id], notice: 'Votre message a bien été envoyé.'
+        format.html {
+             if params[:message][:annonce_id]
+			           redirect_to "/annonces/"+params[:message][:annonce_id], notice: 'Votre message a bien été envoyé.'
+             else
+               redirect_to "/monprofil/messages/" , notice: 'Votre message a bien été envoyé.'
+             end
 		}
         format.json { render :show, status: :created, location: @message }
       else

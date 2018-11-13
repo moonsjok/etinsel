@@ -2,7 +2,18 @@
   <div class="row">
     <div class="col-md-4 order-md-1 mb-4">
       <ul class="list-group mb-3">
-        <a href="" target="" style="width: 100% !important;">
+
+        <a href="#"  method="homecontent" >
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0 font-weight-bold">Annonces</h6>
+                <small class="text-muted">Total annonces</small>
+              </div>
+              <span class="text-muted"><%=@totalAnnonce%> </span>
+        </li>
+        </a>
+		
+		<a href="" target="" style="width: 100% !important;">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
             <h6 class="my-0 font-weight-bold">Inscrits</h6>
@@ -10,21 +21,222 @@
           </div>
           <span class="text-muted"><%=@totalInscrit%></span>
         </li>
-      </a>
-        <a href="#"  method="homecontent" >
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-
-              <div>
-                <h6 class="my-0 font-weight-bold">Annonces</h6>
-                <small class="text-muted">Total annonces</small>
-              </div>
-              <span class="text-muted"><%=@totalAnnonce%></span>
-        </li>
         </a>
       </ul>
 
     </div>
     <div class="col-md-8 order-md-2">
           <span id="homeContent"></span>
+		  
+
+
+
+			<div id="accordion">
+			  <div class="card">
+				<div class="card-header" id="headingO" data-toggle="collapse" data-target="#collapseO" aria-expanded="true" aria-controls="collapseOne">
+					<button class="btn btn-warning btn-block text-left" >
+					<h6 class="mb-0">
+					    <b> Les dix(10) annonces les plus vues </b>
+					</h6>
+					</button>
+				  
+				</div>
+
+				<div id="collapseO" class="collapse show" aria-labelledby="headingO" data-parent="#accordion">
+				  <div class="card-body">
+					<% Annonce.sort_by_popularity("DESC").limit(10).each do |annonce| %>
+						<%=link_to admin_annonce_path(annonce) do%>
+						    <%=annonce.designation%>
+						    <span class="badge badge-pill badge-info ">
+						    <b>
+						        <%= annonce.hits%>
+						        <i class="fa fa-eye"></i>
+							</b>
+						</span>
+						<%end%><br/>
+					<%end%>
+				  </div>
+				</div>
+			  </div>			
+			
+			
+			
+			
+			  <div class="card">
+				<div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+					<button class="btn btn-warning btn-block collapsed text-left" >
+					<h6 class="mb-0">
+					    <b> Les dix(10) annonces les plus vues ces derniers 24 heures </b>
+						</h6>
+					</button>
+				  
+				</div>
+
+				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+				  <div class="card-body">
+					<% Annonce.most_hit(1.day.ago, 10).each do |annonce| %>
+						<%=link_to admin_annonce_path(annonce) do%>
+						    <%=annonce.designation%>
+						    <span class="badge badge-pill badge-info ">
+						    <b>
+						        <%= annonce.hits%>
+						        <i class="fa fa-eye"></i>
+							</b>
+						</span>
+						<%end%><br/>
+					<%end%>
+				  </div>
+				</div>
+			  </div>
+			  <div class="card">
+				<div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				 
+					<button class="btn btn-warning btn-block collapsed  text-left" >
+					   <h6 class="mb-0"><b> Les dix(10) annonces les plus vues ces septs (7) derniers jours</b></h6>
+					</button>
+				  
+				</div>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+				  <div class="card-body">
+					<% Annonce.most_hit(1.week.ago, 10).each do |annonce| %>
+						<%=link_to admin_annonce_path(annonce) do%>
+						    <%=annonce.designation%>
+						    <span class="badge badge-pill badge-info ">
+						    <b>
+						        <%= annonce.hits%>
+						        <i class="fa fa-eye"></i>
+							</b>
+						</span>
+						<%end%><br/>
+					<%end%>
+				  </div>
+				</div>
+			  </div>
+			  <div class="card">
+				<div class="card-header" id="headingThree"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				 
+					<button class="btn btn-warning btn-block collapsed  text-left">
+					  <h6 class="mb-0"><b> Les dix(10) annonces les plus vues ces trente (30) derniers jours</b> </h6>
+					</button>
+				 
+				</div>
+				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+				  <div class="card-body">
+					<% Annonce.most_hit(1.month.ago, 10).each do |annonce| %>
+						<%=link_to admin_annonce_path(annonce) do%>
+						    <%=annonce.designation%>
+						    <span class="badge badge-pill badge-info ">
+						    <b>
+						        <%= annonce.hits%>
+						        <i class="fa fa-eye"></i>
+							</b>
+						</span>
+						<%end%><br/>
+					<%end%>
+				  </div>
+				</div>
+			  </div>
+			</div>
+
+		  
+		   <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+		  
+	
+<!-- Graphs -->
+    <script src="/js/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+          datasets: [
+		  { label :" Annonce(s)" ,
+            data: [339, 21, 184, 240, 234, 240, 120],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: 'RGB(0, 0 , 255)',
+            borderWidth: 4,
+            pointBackgroundColor: 'RGB(0, 0 , 255)'
+          },
+		  { label :" Vérifiée(s)" ,
+            data: [39, 2, 18, 24, 23, 40, 12],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: 'RGB(0, 255 , 0)',
+            borderWidth: 4,
+            pointBackgroundColor: 'RGB(0, 255 , 0)'
+          },
+		  { label :" Non vérifiée(s)" ,
+            data: [153, 345, 184, 240, 234, 240, 12],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: 'RGB(167, 9 , 0)',
+            borderWidth: 4,
+            pointBackgroundColor: 'RGB(255, 194 , 47)'
+          },
+          { label :" Signalé(s)" ,
+            data: [13, 45, 84, 240, 34, 40, 12],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: 'RGB(255, 59 , 0)',
+            borderWidth: 4,
+            pointBackgroundColor: 'RGB(255, 59 , 0)'
+          },		  
+		  { label :" Mise en avant" ,
+            data: [5, 3, 8, 4, 24, 4, 2],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: 'RGB(172, 9 , 172)',
+            borderWidth: 4,
+            pointBackgroundColor: 'RGB(172, 9 , 172)'
+          },
+		  ]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          legend: {
+            display: true,
+          }
+        }
+      });
+    </script>
+
+
+	
+</div>
+</div>
+</div>  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
     </div>
 </div>

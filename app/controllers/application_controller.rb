@@ -4,21 +4,21 @@ class ApplicationController < ActionController::Base
     before_action :configure_devise_parameters , if: :devise_controller?
     before_action :set_my_global_var
     def configure_devise_parameters
-		if !params[:user].nil?
-			## JUSTE POUR AJOUTER L'INDICATIF AU NUMERO DE TELEPHONE SAISI LORS DE L'INSCRIPTION
-			params[:user][:phonenumber] = params[:user][:indicatif].to_s+params[:user][:phonenumber].to_s.gsub(' ','')
-		end
-		if !params[:administrateur].nil?
-			## JUSTE POUR AJOUTER L'INDICATIF AU NUMERO DE TELEPHONE SAISI LORS DE L'INSCRIPTION
-			params[:administrateur][:phonenumber] = params[:administrateur][:indicatif].to_s+params[:administrateur][:phonenumber].to_s.gsub(' ','')
-		end
+		# if !params[:user].nil?
+			# JUSTE POUR AJOUTER L'INDICATIF AU NUMERO DE TELEPHONE SAISI LORS DE L'INSCRIPTION
+			# params[:user][:phonenumber] = params[:user][:indicatif].to_s+params[:user][:phonenumber].to_s.gsub(' ','')
+		# end
+		# if !params[:administrateur].nil?
+			# JUSTE POUR AJOUTER L'INDICATIF AU NUMERO DE TELEPHONE SAISI LORS DE L'INSCRIPTION
+			# params[:administrateur][:phonenumber] = params[:administrateur][:indicatif].to_s+params[:administrateur][:phonenumber].to_s.gsub(' ','')
+		# end
 
 		devise_parameter_sanitizer.permit(:sign_up){|u| u.permit(:email,:username,:phonenumber,:password,:password_confirmation)}
     end
 
 
     def set_my_global_var
-          @user=current_user
+            @user=current_user
 
   			if params[:sous_categorie].nil?
   			       session[:sous_categorie]=""
@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
   i=0
    for user_ in users_
       if !Photo.find_by(role:"profil_pic",user_id: user_.id).nil?
-          profil_pic = Photo.find_by(role:"profil_pic",user_id: user_.id).name
+          profil_pic = '/uploads/'+Photo.find_by(role:"profil_pic",user_id: user_.id).name.to_s
      else
          profil_pic = "/img/Inscrit_avatar.png"
      end

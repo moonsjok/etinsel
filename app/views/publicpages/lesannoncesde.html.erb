@@ -108,7 +108,7 @@ end
 			<p class="card-text">
 			<small>Publié le <%= annonce.created_at %></small><br>
 			<% if annonce.description.to_s !=""%>
-			   <%= annonce.description.truncate(200) %>
+			   <%= raw(annonce.description.truncate(200)) %>
 			<%end%>
 			</p>
 		</div>

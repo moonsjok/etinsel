@@ -17,13 +17,13 @@
 </div>
 <div class="row">
     <div class="col-md-3 order-md-1" >
-      <ul class="_list-group" style="margin:0px; padding:0px; border-radius:0px;">
-        <a href="/monprofil" class="list-group-item">Mon profil</a>
-				        <a href="<%=mesannonces_path%>" class="list-group-item">Mes annonces</a>
-        <a href="/monprofil/messages" class="list-group-item">Messages</a>
-        <a href="/monprofil/chats" class="list-group-item">Chats</a>
-      </ul>
-
+        <ul class="_list-group" style="margin:0px; padding:0px; border-radius:0px;">       
+			<a href="/monprofil" class="list-group-item">Mon profil</a>
+			<a href="<%=mesannonces_path%>" class="list-group-item">Mes annonces</a>
+			<a class="list-group-item" href="<%= new_annonce_path %>">Publier</a>		
+			<a href="/monprofil/messages" class="list-group-item">Messages</a>
+			<a href="/monprofil/chats" class="list-group-item">Chats</a>
+        </ul>
 
       <div class="" id="people-list">
         <!-- <div class="search">

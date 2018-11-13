@@ -10,8 +10,8 @@ class CreateAnnonces < ActiveRecord::Migration[5.2]
      t.string :je_suis_le
      t.string :tel
      t.text :description,limit: 4294967295
-     t.integer :prix
-     t.integer :commission_agence
+     t.integer :prix ,limit: 50
+     t.integer :commission_agence ,limit: 50
      t.string :minimum
      t.string :condition
 
@@ -23,7 +23,7 @@ class CreateAnnonces < ActiveRecord::Migration[5.2]
      t.integer :cuisine
      t.integer :douche
      t.integer :wc
-##################### POUR LES CHECKBOX ###############
+##################### POUR LES CHECKBOX ###################
      t.boolean :hopital, :default => false
      t.boolean :marche, :default => false
      t.boolean :ecole, :default => false
@@ -69,8 +69,6 @@ class CreateAnnonces < ActiveRecord::Migration[5.2]
      t.string :caution_electricite_eau
      t.string :localisation_longitude
      t.string :localisation_latitude
-
-
 
      t.integer :user_id
 

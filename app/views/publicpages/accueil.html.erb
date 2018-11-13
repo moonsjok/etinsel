@@ -127,7 +127,7 @@
 			           <b><a style="color:black; Text-Transform: capitalize; text-decoration:none;" href="/annonces/<%= annonce.id %>"><%= annonce.designation %></a></b>
 						<span class="badge badge-pill badge-info ">
 						    <b>
-						        <%= Vue.where(annonce_id: annonce.id).count%>
+						        <%= annonce.hits%>
 						        <i class="fa fa-eye"></i>
 							</b>
 						</span>

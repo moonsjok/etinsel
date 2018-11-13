@@ -17,9 +17,8 @@ Rails.application.routes.draw do
 	
       resources :annoncesmiseenavants
       resources :publictchats
-      resources :contacts , only:[:new,:create]
+      resources :contacts , only:[:new,:create], via: [:get, :post]
       resources :messages #PRIVE et PUBLIC
-	  resources :vues #, only:[:new,:create]
       resources :annonces #PRIVE et PUBLIC
       resources :identities  #PRIVE
       resources :photos	   #PRIVE

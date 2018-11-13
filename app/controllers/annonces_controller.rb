@@ -59,6 +59,12 @@ end
   def show
     @annonce = Annonce.find(params[:id])
     @user=User.find(@annonce.user_id)
+
+    if user_signed_in?
+        @current_user_id=current_user.id
+    # else
+    #     @current_user_id=0
+    end
     @photos =  @annonce.photos
 
     @message = Message.new
@@ -68,11 +74,8 @@ end
        @online = '<div class="font-weight-bold " ><span class="text-warning">L\'annonceur est deconnecté ;</span> laisser lui un message .</div>'
     end
     @annonceur = Identity.find_by(user_id: @annonce.user_id)
-	if session[:pays].nil?
-		Vue.create(annonce_id: params[:id])
-	else
-	    Vue.create(annonce_id: params[:id],pays: session[:pays])
-	end
+	
+	@annonce.punch(request)
   end
 
   # GET /annonces/new
@@ -132,11 +135,11 @@ end
     end
   end
 
-def signaler
-    respond_to do |format|
-         format.js
-    end
-end
+	def signaler
+		respond_to do |format|
+			@annonce.update(valide: 1)
+		end
+	end
 
 def valider
 

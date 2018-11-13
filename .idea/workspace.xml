@@ -3,14 +3,57 @@
   <component name="ChangeListManager">
     <list default="true" id="c73e376a-dffc-43ba-8cb3-a99568def467" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/vues.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/vues.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/annonces_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/annonces_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/messages_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/messages_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/myajaxs_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/myajaxs_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/privatepages_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/privatepages_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/vues_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/vues_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/annonce.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/annonce.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/vue.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/application/_navigation.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/application/_navigation.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/homes/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/homes/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/annonces/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/annonces/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/annonces/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/annonces/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/annonces/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/annonces/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/annonces/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/annonces/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/contacts/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contacts/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/admin/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/admin/application.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/partials/_footer.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/partials/_footer.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/privatepages/mesannonces.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/privatepages/mesannonces.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/privatepages/monprofil.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/privatepages/monprofil.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/privatepages/monprofil_partials/_messages.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/privatepages/monprofil_partials/_messages.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/publicpages/accueil.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/publicpages/accueil.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/publicpages/lesannoncesde.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/publicpages/lesannoncesde.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/_vue.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vues/show.json.jbuilder" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180920155256_create_annonces.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20180920155256_create_annonces.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180922202240_create_identities.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20180922202240_create_identities.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181106224951_create_vues.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log/development.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/development.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/vues_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/vues.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/vue_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/vues_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/-E/-eQOv_Zeev3FQ1LR21vPcTP9CvqxIupNX_9rme1slyQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/-E/-eQOv_Zeev3FQ1LR21vPcTP9CvqxIupNX_9rme1slyQ.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/0A/0AkqgyypSOFXafX06paTBk9a-wUF23yBgrroQMqk_XE.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/0A/0AkqgyypSOFXafX06paTBk9a-wUF23yBgrroQMqk_XE.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/pu/puvJ0Lh4gQySKBlyYlPYnC7pUzLxTY_ywhk320l6cXM.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/pu/puvJ0Lh4gQySKBlyYlPYnC7pUzLxTY_ywhk320l6cXM.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/cache/bootsnap-load-path-cache" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/cache/bootsnap-load-path-cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/pids/server.pid" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/pids/server.pid" afterDir="false" />
     </list>
@@ -24,131 +67,49 @@
     <session id="-116227418">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.46" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.57" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="erb" value="6" />
+          <entry key="erb" value="10" />
           <entry key="gitignore" value="1" />
-          <entry key="rb" value="13" />
+          <entry key="rb" value="19" />
           <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="RHTML" value="6" />
-          <entry key="Ruby" value="13" />
+          <entry key="RHTML" value="10" />
+          <entry key="Ruby" value="19" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="erb" value="359" />
-          <entry key="rb" value="226" />
+          <entry key="erb" value="983" />
+          <entry key="rb" value="346" />
           <entry key="yml" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="RHTML" value="359" />
-          <entry key="Ruby" value="226" />
+          <entry key="RHTML" value="983" />
+          <entry key="Ruby" value="346" />
           <entry key="YAML" value="32" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/admin/application_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="278" column="18" selection-start-line="278" selection-start-column="18" selection-end-line="278" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/myajaxs_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="24" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/partials/_footer.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="419" column="57" selection-start-line="419" selection-start-column="57" selection-end-line="419" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/admin/application.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-              <folding>
-                <element signature="n#style#0;n#b#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#b#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102" />
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -172,6 +133,10 @@
       <find>phone</find>
       <find>Users</find>
       <find>user</find>
+      <find>modal</find>
+      <find>&lt;button</find>
+      <find>@user</find>
+      <find>@users</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,9 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/layouts/partials/_hNavbar.html.erb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/fields/trix_field/_show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/fields/checkbox_field/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/admin/application/_stylesheet.html.erb" />
         <option value="$PROJECT_DIR$/app/dashboards/identity_dashboard.rb" />
@@ -228,8 +190,12 @@
         <option value="$PROJECT_DIR$/app/controllers/admin/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/admin/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/annonces/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/annonces_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/privatepages/monprofil_partials/_messages.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
       </list>
     </option>
   </component>
@@ -259,7 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -267,43 +232,11 @@
               <item name="etinsel" type="b2602c69:ProjectViewProjectNode" />
               <item name="etinsel" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="etinsel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etinsel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="etinsel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etinsel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="etinsel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etinsel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="devise" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="etinsel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etinsel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="etinsel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etinsel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -368,6 +301,9 @@
       <properties />
       <listeners />
     </configuration>
+    <configuration name="_messages.html.erb" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/etinsel/app/views/privatepages/monprofil_partials/_messages.html.erb">
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="RailsRunConfigurationType" factoryName="Rails">
       <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -388,6 +324,11 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug._messages.html.erb" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -414,16 +355,18 @@
       <workItem from="1541249939807" duration="2626000" />
       <workItem from="1541258566404" duration="817000" />
       <workItem from="1541266408761" duration="5640000" />
+      <workItem from="1542120549111" duration="3568000" />
+      <workItem from="1542126473357" duration="10799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83111000" />
+    <option name="totallyTimeSpent" value="97478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22692889" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23373677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -433,7 +376,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32840723" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39901477" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -470,33 +413,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/dashboards/annoncesmiseenavant_dashboard.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/fields/user_id_field/_index.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/fields/user_id_field.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/application/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/application/_collection.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/fields/user_id_field/_show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -584,13 +500,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/_.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="84" lean-forward="true" selection-start-line="19" selection-start-column="84" selection-end-line="19" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/_.html" />
     <entry file="file://$PROJECT_DIR$/app/views/fields/categorie_field/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -647,13 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/privatepages/monprofil.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -670,13 +573,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/publicpages/lesannoncesde.html.erb">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/annonces_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1996">
-          <caret line="10" column="63" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="63" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/admin.rb" />
     <entry file="file://$PROJECT_DIR$/db/migrate/20181103133818_devise_create_admins.rb" />
@@ -709,13 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/admin/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/administrateur.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -723,61 +612,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/partials/_footer.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="278" column="18" selection-start-line="278" selection-start-column="18" selection-end-line="278" selection-end-column="18" />
+        <state relative-caret-position="6749">
+          <caret line="400" column="57" selection-start-line="400" selection-start-column="57" selection-end-line="400" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/admin/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#b#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#b#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="816">
+          <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+        <state relative-caret-position="374">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/myajaxs_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="24" />
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/partials/_footer.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="419" column="57" selection-start-line="419" selection-start-column="57" selection-end-line="419" selection-end-column="57" />
+        <state relative-caret-position="362">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/admin/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="136">
+          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/privatepages/_message.html.erb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/annonces/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="706" column="60" selection-start-line="706" selection-start-column="44" selection-end-line="706" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/annonces_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="15" selection-start-line="15" selection-end-line="61" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/privatepages_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/messages_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/privatepages/monprofil_partials/_messages.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
+          <folding>
+            <element signature="e#400#406#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/privatepages/monprofil.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
         </state>
       </provider>
     </entry>

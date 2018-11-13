@@ -75,6 +75,19 @@
 			  xhttp.open("GET", "/ajax/"+country+"/"+state+"/cities", true);
 			  xhttp.send();
 			}
+			
+        /* Signaler l\'annonce */
+			function signalerAnnonce(annonce_id) {
+			    var xhttp = new XMLHttpRequest();
+			     xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+				 document.getElementById("signaleAnnonce").innerHTML = xhttp.responseText;
+				}
+			  };
+			  xhttp.open("GET", "/ajax/"+annonce_id+"/signaleAnnonce", true);
+			  xhttp.send();
+			}			
+			
         </script>
         	<% if  params[:controller] == "annonces" %>
 		    <%= render "layouts/partials/locationPicker"  %>

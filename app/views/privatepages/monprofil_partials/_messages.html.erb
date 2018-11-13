@@ -4,18 +4,122 @@
 		    <img src="/img/inconnu.png" alt="Avatar" style="width:100%;">
 	<%else%>
 		<div class="message" >
-		    <!-- img src="/uploads/" alt="Avatar" class="right" style="width:100%;" -->
+
+			  <% if Photo.find_by(user_id: message.user_id,role: :profil_pic).nil? %>
+				     <img src="/uploads/Inscrit_avatar.png" alt="Avatar" style="width:100%;">
+			  <%else %>
+				     <img src="/uploads/<%=Photo.find_by(user_id: message.user_id,role: :profil_pic).name%>" alt="Avatar" style="width:100%;">
+				<%end %>
+		    <%= User.find(message.user_id).username %>
 	<%end%>
 			<p><%=raw(message.message)%></p>
 			<span class="time-left"><i><%=raw(message.created_at)%></i></span>
-			<span style="float:right, display:none;">
+	    &nbsp;&nbsp;
+	<%if message.user_id %>
+	    <span style="float:right;">
 			    <i>
-					<a href="#" data-toggle="tooltip" data-placement="bottom" title="Repondre">Repondre</a>
+					<span  data-toggle="modal" data-target="#repondreModal" data-id="<%=message.user_id %>" data-username="<%= User.find(message.user_id).username %>" title="Répondre">
+									<i class="fa fa-reply" aria-hidden="true" ></i>
+					</span>
 					&nbsp;
-					<a href="#" data-toggle="tooltip" data-placement="bottom" title="Marquer comme lu">Lu</a>
-					&nbsp;
-					<a href="#"  data-toggle="tooltip" data-placement="bottom" title="Marquer comme non lu">Non lu</a>
+<!--					<span href="#" data-toggle="tooltip" data-placement="bottom" title="Marquer comme lu">-->
+<!--						    <i class="fa fa-read"></i>-->
+<!--					</span>-->
+<!--					&nbsp;-->
+<!--					<a href="#"  data-toggle="tooltip" data-placement="bottom" title="Marquer comme non lu">Non lu</a>-->
 				</i>
 			</span>
-		</div>
+
+		<%end %>
+	</div>
+
 <%end%>
+
+
+
+<!-- Modal whatsapp mail send  -->
+<div class="modal fade" id="repondreModal" tabindex="-1" role="dialog" aria-labelledby="repondreModalLabel" aria-hidden="true" style="z-index:999999" >
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-secondary" >
+				<h2 class="modal-title text-white size-25" id="repondreModalLabel">
+					<i class="fa fa-reply"></i>
+					<small style="text-right" >Répondre à <span id="username"></span></small>
+				</h2>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#84843c;" >
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<%= form_for Message.new , url: {controller: "messages", action: "create"}, html: {} do |form| %>
+
+					<%= raw(@online) %><br/>
+					<%= form.hidden_field :user_id ,value: @user.id%>
+					<%= form.hidden_field :destinataire %>
+					<textarea name="message[message]" id="message_message" class="form-control" rows="10">
+
+	        </textarea>
+					<script data-sample="1">
+              CKEDITOR.replace( 'message_message', {
+                  // Define the toolbar groups as it is a more accessible solution.
+                  toolbarGroups: [
+                      {"name":"basicstyles","groups":["basicstyles"]},
+                      {"name":"links","groups":["links"]},
+                      {"name":"paragraph","groups":["list","blocks"]},
+                      {"name":"document","groups":["mode"]},
+                      {"name":"insert","groups":["insert"]},
+                      {"name":"styles","groups":["styles"]},
+                      {"name":"about","groups":["about"]}
+                  ],
+                  // Remove the redundant buttons from toolbar groups defined above.
+                  removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+              } );
+					</script>
+
+					<br/>
+					<%= form.hidden_field :status %>
+					<input type="submit" value="Envoyé le message"  class="btn btn-success" name="commit" >
+				<%end%>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<script>
+
+    $('#repondreModal').on('show.bs.modal', function (event) {
+        var span = $(event.relatedTarget) // Button that triggered the modal
+        var destinataire = span.data('id') // Extract info from data-* attributes
+        var username = span.data('username') // Extract info from data-* attributes
+
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title small #username').html(username)
+        modal.find('.modal-body #message_destinataire').val(destinataire)
+    })
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
