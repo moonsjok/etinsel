@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
     namespace :admin do
         resources :homes
         resources :pages
@@ -12,9 +13,10 @@ Rails.application.routes.draw do
         # resources :photos
         # resources :publictchats
 		resources :administrateurs
+		resources :publicites
         root to: "homes#index"
     end
-	
+	  resources :publicites
       resources :annoncesmiseenavants
       resources :publictchats
       resources :contacts , only:[:new,:create], via: [:get, :post]

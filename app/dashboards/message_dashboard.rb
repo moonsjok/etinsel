@@ -9,8 +9,8 @@ class MessageDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    user_id: Field::Number,
-    destinataire: Field::Number,
+    user_id: UserIdField,
+    destinataire: UserIdField,
     message: Field::Text,
     status: Field::Number,
     created_at: Field::DateTime,

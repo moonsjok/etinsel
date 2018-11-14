@@ -1,0 +1,32 @@
+<%= form_with(model: publicite, local: true) do |form| %>
+  <% if publicite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(publicite.errors.count, "error") %> prohibited this publicite from being saved:</h2>
+
+      <ul>
+      <% publicite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :resolution %>
+    <%= form.text_field :resolution %>
+  </div>
+
+  <div class="field">
+    <%= form.label :entreprise %>
+    <%= form.text_field :entreprise %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duree %>
+    <%= form.text_field :duree %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

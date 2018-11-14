@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resolution: MyString
+  entreprise: MyString
+  duree: MyString
+
+two:
+  resolution: MyString
+  entreprise: MyString
+  duree: MyString

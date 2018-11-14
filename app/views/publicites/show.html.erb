@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resolution:</strong>
+  <%= @publicite.resolution %>
+</p>
+
+<p>
+  <strong>Entreprise:</strong>
+  <%= @publicite.entreprise %>
+</p>
+
+<p>
+  <strong>Duree:</strong>
+  <%= @publicite.duree %>
+</p>
+
+<%= link_to 'Edit', edit_publicite_path(@publicite) %> |
+<%= link_to 'Back', publicites_path %>

@@ -1,1 +1,3 @@
-<%= field.to_s %>
+<% if field.data.to_i !=0 %>
+   <%=User.find(field.data.to_i).username %>&nbsp;(id: <%=field.data.to_i%>)
+<%end%>

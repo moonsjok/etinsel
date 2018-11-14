@@ -46,6 +46,6 @@ class AnnoncesmiseenavantDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(annoncesmiseenavant)
-    "Annoncesmiseenavant ##{annoncesmiseenavant.id}"
+       #"Annonce en avant ##{annoncesmiseenavant.id}"
   end
 end

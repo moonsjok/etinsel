@@ -9,7 +9,7 @@ class AnnonceDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    photos:  Field::ActiveStorage.with_options({url_only: true}),
+    photos: Field::ActiveStorage.with_options({url_only: true}),
     designation: Field::String,
     categorie: CategorieField,
     sous_categorie: SousCategorieField,
