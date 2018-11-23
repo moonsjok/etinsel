@@ -1,2 +1,0 @@
-class Publictchat < ApplicationRecord
-end

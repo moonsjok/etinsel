@@ -27,8 +27,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-  gem 'mini_magick', '~> 4.8'
-
+	  #gem 'mini_magick', '~> 4.8'
+	  #gem 'graphicsmagick', '~> 1.0', '>= 1.0.6'
+      # ne marche pas sous windows 
+	  
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -73,6 +75,7 @@ gem 'administrate'
 gem 'administrate-field-active_storage'
 gem 'administrate-field-image'
 gem 'trix'
+#gem 'image_processing'
 
 ######################################## compteur de visite  ######################################
 gem 'punching_bag', '~> 0.6.0'

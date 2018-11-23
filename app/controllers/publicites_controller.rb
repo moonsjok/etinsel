@@ -69,6 +69,6 @@ class PublicitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publicite_params
-      params.require(:publicite).permit(:resolution, :entreprise, :duree)
+      params.require(:publicite).permit(:resolution, :entreprise, :duree,:banner)
     end
 end

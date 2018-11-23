@@ -1,5 +1,5 @@
 
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light " style="background:rgb(228,77, 33);"  >
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light " style="<%=@bgColor%>"  >
         <a class="navbar-brand" href="/">
 	        <img src="/img/logo.png"  width="90" height="40" align="middle" />
 		   </a>
@@ -49,48 +49,45 @@
             <!-- <i class="fa fa-bullhorn" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
             Immobilier</a>
           </li>
+				<li class="nav-item">
+				  <a href="<%= rencontres_path %>" class="nav-link">
+					<!-- <i class="fa fa-comments" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
+					Rencontre</a>
+				</li>
+				<li class="nav-item">
+					<a href="<%= user_session_path %>" class="nav-link">
+					<!-- <i class="fa fa-file-text" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
+					Actualité</a>
+				</li>
+				<% if user_signed_in? %>
+				<% else %>
+						<li  class="nav-item" >
+						<a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal" >
+						<!-- <i class="fa fa-user" style="width:10px; padding:0px; margin:0px; margin-right:5px; " ></i>  -->
+						Se connecter </a></li>
+						<li  class="nav-item" ><a href="<%= new_user_registration_path %>"   data-turbolinks="false"  class="nav-link"  >
+						<!-- <i class="fa fa-user" style="width:10px; padding:0px; margin:0px; margin-right:5px; " ></i> -->
+						S'inscrire
+						</a></li>
+				<% end  %>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  À propos
+						</a>
+						<div class="dropdown-menu arrow_box" aria-labelledby="navbarDropdownMenuLink" style="left:-90px;">
+							<a class="dropdown-item" href="<%=quisommesnous_path %>">Qui sommes-nous?</a>
+							<a class="dropdown-item" href="<%=commentcamarche_path %>">Fonctionnement</a>
+							<a class="dropdown-item" href="<%=new_contact_path %>">Nous contacter</a>
+						</div>
+					</li>
 
-
-
-							<li class="nav-item">
-							  <a href="<%= publictchats_path %>" class="nav-link">
-								<!-- <i class="fa fa-comments" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
-								Rencontre</a>
-							</li>
-							<li class="nav-item">
-								<a href="<%= user_session_path %>" class="nav-link">
-								<!-- <i class="fa fa-file-text" style="width:10px; padding:0px; margin:0px; margin-right:10px; " ></i> -->
-								Actualité</a>
-                            </li>
-<% if user_signed_in? %>
-<% else %>
-                <li  class="nav-item" >
-				<a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal" >
-				<!-- <i class="fa fa-user" style="width:10px; padding:0px; margin:0px; margin-right:5px; " ></i>  -->
-				Se connecter </a></li>
-				<li  class="nav-item" ><a href="<%= new_user_registration_path %>"   data-turbolinks="false"  class="nav-link"  >
-				<!-- <i class="fa fa-user" style="width:10px; padding:0px; margin:0px; margin-right:5px; " ></i> -->
-				S'inscrire
-				</a></li>
-<% end  %>
-					        <li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  À propos
-								</a>
-								<div class="dropdown-menu arrow_box" aria-labelledby="navbarDropdownMenuLink" style="left:-90px;">
-									<a class="dropdown-item" href="<%=quisommesnous_path %>">Qui sommes-nous?</a>
-									<a class="dropdown-item" href="<%=commentcamarche_path %>">Fonctionnement</a>
-									<a class="dropdown-item" href="<%=new_contact_path %>">Nous contacter</a>
-								</div>
-							</li>
-
-							<% if user_signed_in? %>
-							    <li  class="nav-item" >
-									<a class="nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">
-									<!-- <i class="fa fa-sign-out"></i> -->
-									Se déconnecter</a>
-								</li>
-							<%end%>
+					<% if user_signed_in? %>
+						<li  class="nav-item" >
+							<a class="nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">
+							<!-- <i class="fa fa-sign-out"></i> -->
+							Se déconnecter</a>
+						</li>
+					<%end%>
         </ul>
 
       </div>

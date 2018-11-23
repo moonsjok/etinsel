@@ -16,14 +16,16 @@
           </div>
 </div>
 <div class="row">
+<!-------------------- DEBUT DU MENU --------------->	
     <div class="col-md-3 order-md-1" >
         <ul class="_list-group" style="margin:0px; padding:0px; border-radius:0px;">       
-			<a href="/monprofil" class="list-group-item">Mon profil</a>
+			<a href="<%=monprofil_path()%>" class="list-group-item">Mon profil</a>
 			<a href="<%=mesannonces_path%>" class="list-group-item">Mes annonces</a>
 			<a class="list-group-item" href="<%= new_annonce_path %>">Publier</a>		
-			<a href="/monprofil/messages" class="list-group-item">Messages</a>
-			<a href="/monprofil/chats" class="list-group-item">Chats</a>
+			<a href="<%=monprofil_path(:messages)%>" class="list-group-item">Messages</a>
+			<a href="<%=monprofil_path(:chats)%>" class="list-group-item">Chats</a>
         </ul>
+
 
       <div class="" id="people-list">
         <!-- <div class="search">
@@ -34,35 +36,22 @@
         <ul class="list">
 
             <%for online in @users_online %>
-          <li class="clearfix  ">
-            <img src="<%= online[2] %>" alt="avatar"  width="50" height="50" align="middle"/>
-            <%= online[1] %>
-                <i class="fa fa-circle online"></i> En ligne
-
-          </li>
+				<%if online[1] != @user.username%>
+					<li  style="cursor:pointer;" class="clearfix"  data-toggle="modal" data-target="#repondreModal" data-id="<%= online[0] %>" data-username=" Envoyer un message <%= online[1] %>" title="Envoyer un message <%= online[1] %>">
+						<img src="<%= online[2] %>" alt="avatar"  width="50" height="50" align="middle"/>
+						    <%= online[1] %>
+						<i class="fa fa-circle online"></i> En ligne
+					</li>
+				<%end%>
             <%end %>
 
         </ul>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
+<!-------------------- FIN DU MENU --------------->	
+	
+	
     <div class="col-md-9 order-md-2 bg-white">
 
 
@@ -234,3 +223,75 @@ paginate_button:none;
 
 </div>
 </div>
+
+
+
+
+<!---------------------- END OF REPONSE modal ---------------------------->
+
+
+<!-- Modal whatsapp mail send  -->
+<div class="modal fade" id="repondreModal" tabindex="-1" role="dialog" aria-labelledby="repondreModalLabel" aria-hidden="true" style="z-index:999999" >
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-secondary" >
+				<h2 class="modal-title text-white size-25" id="repondreModalLabel">
+					<i class="fa fa-reply"></i>
+					<small style="text-right" > <span id="username"></span> </small>
+				</h2>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#84843c;" >
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<%= form_for Message.new , url: {controller: "messages", action: "create"}, html: {} do |form| %>
+					<%= raw(@online) %><br/>
+					<%= form.hidden_field :user_id ,value: @user.id%>
+					<%= form.hidden_field :destinataire %>
+					<textarea name="message[message]" id="message_message" class="form-control" rows="10"></textarea>
+					<script data-sample="1">
+              CKEDITOR.replace( 'message_message', {
+                  // Define the toolbar groups as it is a more accessible solution.
+                  toolbarGroups: [
+                      {"name":"basicstyles","groups":["basicstyles"]},
+                      {"name":"links","groups":["links"]},
+                      {"name":"paragraph","groups":["list","blocks"]},
+                      {"name":"document","groups":["mode"]},
+                      {"name":"insert","groups":["insert"]},
+                      {"name":"styles","groups":["styles"]},
+                      {"name":"about","groups":["about"]}
+                  ],
+                  // Remove the redundant buttons from toolbar groups defined above.
+                  removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+              } );
+					</script>
+
+					<br/>
+					<%= form.hidden_field :status %>
+					<input type="submit" value="Envoyé le message"  class="btn btn-success" name="commit" >
+				<%end%>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+    $('#repondreModal').on('show.bs.modal', function (event) {
+        var span = $(event.relatedTarget) // Button that triggered the modal
+        var destinataire = span.data('id') // Extract info from data-* attributes
+        var username = span.data('username') // Extract info from data-* attributes
+
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title small #username').html(username)
+        modal.find('.modal-body #message_destinataire').val(destinataire)
+    })
+</script>
+
+
+<!---------------------- END OF REPONSE modal ---------------------------->
+
+
+

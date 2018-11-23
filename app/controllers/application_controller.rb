@@ -57,33 +57,59 @@ class ApplicationController < ActionController::Base
          end
 
 
-  ############################# POUR LE CHAT ##########################
+            ############################# POUR LE CHAT ##########################
 
-  users_= User.select(:id,:username).where(online: 1).order("created_at DESC")
-  @users_online = []
-  i=0
-   for user_ in users_
-      if !Photo.find_by(role:"profil_pic",user_id: user_.id).nil?
-          profil_pic = '/uploads/'+Photo.find_by(role:"profil_pic",user_id: user_.id).name.to_s
-     else
-         profil_pic = "/img/Inscrit_avatar.png"
-     end
-       tableau = [user_.id,user_.username,profil_pic]
-       @users_online.push(tableau)
-       i = i+1
-   end
-
-  ############################# FIN DU CHAT ##############################
-
+	users_= User.select(:id,:username).where(online: 1).order("created_at DESC")
+	@users_online = []
+	i=0
+    for user_ in users_
+        if !Photo.find_by(role:"profil_pic",user_id: user_.id).nil?
+            profil_pic = '/uploads/'+Photo.find_by(role:"profil_pic",user_id: user_.id).name.to_s
+        else
+            profil_pic = "/img/Inscrit_avatar.png"
+        end
+		   tableau = [user_.id,user_.username,profil_pic]
+		   @users_online.push(tableau)
+		   i = i+1
     end
 
+            ############################# FIN DU CHAT ##############################
+			
+			if params[:controller] == "rencontres"
+     			@bgColor = "background:rgb(254,204,23);"
+				@homepageHeadercover ="
+					font-family:arial;
+					background-image: url(/img/header_bg_rencontre.jpg);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-color: rgba(0, 0, 0, 0.2);
+				"
+				@chevrondown_color = "color:rgb(254,204,23);"
+			else
+			    @bgColor = "background:rgb(228,77, 33);"
+				@homepageHeadercover ="
+					font-family:arial;
+					background-image: url(/img/header_bg.jpg);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-color: rgba(0, 0, 0, 0.2);
+				"
+				@chevrondown_color = "color:rgb(228,77, 33);"				
+			end
+
+    end
+	
 
     def after_sign_in_path_for(resource)
-      if resource.is_a?(User)
-        monprofil_path
-      elsif resource.is_a?(Administrateur)
-          admin_homes_path
-      end
+        if resource.is_a?(User)
+            monprofil_path
+        elsif resource.is_a?(Administrateur)
+            admin_homes_path
+        end
+		
+		
     end
 
 

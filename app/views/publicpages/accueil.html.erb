@@ -72,20 +72,9 @@
 	<hr style="padding:0px; margin:0px; " />
 	<div class="container">
 		<div class="row">
-
-			<% cptAn=-1 %>
+			
 			<% for annonce in @annonces %>
-				<% cptAn=cptAn+1%>
-
-				<% if cptAn == 3 %>
-					</div>
-					<div class="row mt-3 mb-3 ml-0 mr0" >
-						<div class="col-md-12 ml-0 mr0 text-center" style="border:solid 0px black;"" >
-						<img class="img-fluid" src="/img/banner1500X300_<%= rand(0..2) %>.gif" height="300" width="100%"  style="border:0px; padding:0px; margin-left:-12px; margin-right:-12px;" />
-					</div>
-					</div>
-					<div class="row" >
-				<%end%>
+				
 				<% @photos =  annonce.photos%>
 				<div class="col-md-4">
 					<div class="card ml-1 mr-1 mt-1" style="min-height: 300px !important; ">
@@ -107,7 +96,7 @@
 										<% i = i + 1 %>
 										<div class="carousel-item bg-secondary <% if i == 1 %> active <% end %> ">
 											<center>
-												<%= image_tag(photo, class:"d-block image-responsive hover-shadow cursor", height:"200", onclick:"openModal();currentSlide(1)" )%>
+												<%= image_tag(photo.variant(resize: "100x100"), class:"d-block image-responsive hover-shadow cursor", height:"200", onclick:"openModal();currentSlide(1)" )%>
 											</center>
 										</div>
 									<% end %>
@@ -144,28 +133,71 @@
 				</div>
 
 			<% end %>
-      </div>
+        </div>
 			</div>
-
-			</div>
-
+		</div>
 </div>
-<div class="container mt-2 mb-2">
-	   <div class="row">
-			    <div class="col-12">
-						<br/><br/><br/>
+<!------------------------------------ LES PUBLICITES DE 1500X300 --------------------------------------->
+<div class="container-fluid">	
+	<div class="row mt-3 mb-3 ml-0 mr0" >
+						<div class="col-md-12 ml-0 mr0 text-center" style="border:solid 0px black;" >
+
+						<div id="carouselPubIndicators" class="carousel slide" data-ride="carousel" style=" height:300px; background-image:url(/img/annonceListImgPlaceholder.png); background-position:center; background-repeat:no-repeat;">
+							<ol class="carousel-indicators">
+								<% j = 0 %>
+								<%for pub in @pubs %>
+									<% if pub.to_s !="" %>
+										<li data-target="#carousel<%= pub.id %>Indicators" data-slide-to="<%= j %>" <% if 1 == 0 %> class="active" <% end %>></li>
+									<%end%>
+
+									<% j = j+1 %>
+								<% end %>
+							</ol>
+							<div class="carousel-inner">
+								<% i = 0 %>
+								<%for pub in @pubs %>
+									<% if pub.to_s !="" %>
+										<% i = i + 1 %>
+										<div class="carousel-item  <% if i == 1 %> active <% end %> ">
+											<center>
+												<%= image_tag(pub.banner, class:"d-block image-responsive hover-shadow cursor", width:"1500", height:"300" )%>
+											</center>
+										</div>
+									<% end %>
+								<% end %>
+							</div>
+							<a class="carousel-control carousel-control-prev" href="#carouselPubIndicators" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control  carousel-control-next" href="#carouselPubIndicators" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+
+
+					    </div>
 					</div>
-		 </div>
+</div>					
+<!------------------------------ FIN DU SLIDERS DES PUBS DE 1500X300 ------------------------------>
+
+<div class="container mt-2 mb-2">
+	<div class="row">
+		<div class="col-12">
+			<br/><br/><br/>
+		</div>
+	</div>
 </div>
 
 <div class="container">
-     <div class="row">
-					 <div class="col-md-12 text-justify "
-							 <% if !@accueil.content.blank? %>
-										 <%=raw(@accueil.content)%>
-							 <%end%>
-		       </div>
-		 </div>
+    <div class="row">
+		<div class="col-md-12 text-justify ">
+			<% if !@accueil.content.blank? %>
+				<%=raw(@accueil.content)%>
+			<%end%>
+		</div>
+	</div>
 </div>
 
 <div class="container mt-2 mb-2">

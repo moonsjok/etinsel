@@ -1,13 +1,15 @@
 class PublicpagesController < ApplicationController
 
-      def accueil
-          @accueil = Page.find(1)
-          @annonce_id =[]
-          for mise_en_avant in Annoncesmiseenavant.select('annonce_id').limit(3).order('created_at DESC')
-              @annonce_id.push(mise_en_avant.annonce_id.to_i)
-          end
-              @annonces = Annonce.find(@annonce_id)
+        def accueil
+			@accueil = Page.find(1)
+			@annonce_id =[]
+			for mise_en_avant in Annoncesmiseenavant.select('annonce_id').limit(3).order('created_at DESC')
+				  @annonce_id.push(mise_en_avant.annonce_id.to_i)
 			end
+                @annonces = Annonce.find(@annonce_id)
+				@pubs =  Publicite.limit(3)
+
+		end
 
       def quisommesnous
           @quisommesnous = Page.find(2)

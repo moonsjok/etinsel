@@ -107,6 +107,8 @@ GEM
     ffi (1.9.25-x64-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    graphicsmagick (1.0.6)
+      subexec
     httpclient (2.8.3)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
@@ -218,6 +220,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    subexec (0.2.3)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -263,6 +266,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.4, >= 4.4.3)
   duktape
+  graphicsmagick (~> 1.0, >= 1.0.6)
   jbuilder (~> 2.5)
   jquery-rails
   mail_form (~> 1.5, >= 1.5.1)
